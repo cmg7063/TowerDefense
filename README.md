@@ -12,7 +12,7 @@ Concept: A top down build-your-own defense game.
 ## Clone
 
 When you clone a repo it will create a folder with repo's name Plants. It will have a .git file in it which will track any changes to the folder.  
-The unity files will be in `Plants\Plants\`. **Leave this as is to prevent adding local settings to the repo.**  
+The unity files will be in `TowerDefense\TowerDefense\`. **Leave this as is to prevent adding local settings to the repo.**  
 
 ## Branch
 
