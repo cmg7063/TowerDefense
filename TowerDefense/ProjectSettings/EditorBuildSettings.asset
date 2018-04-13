@@ -11,3 +11,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SungTest.unity
     guid: 09589bb5151b340e4978b3d90e4c959d
+  - enabled: 1
+    path: Assets/Scenes/Test.unity
+    guid: 751c068d5f0c723408d51d2031b78933

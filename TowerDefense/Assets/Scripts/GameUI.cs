@@ -32,15 +32,15 @@ public class GameUI : MonoBehaviour
 
         if (Player.towerSelect == 0)
         {
-            defenseText.text = "DEFENSE: Spike Trap";
-        }
-        if (Player.towerSelect == 2)
-        {
             defenseText.text = "DEFENSE: Single Shot Tower";
         }
         if (Player.towerSelect == 1)
         {
             defenseText.text = "DEFENSE: Spread Shot Tower";
+        }
+        if (Player.towerSelect == 2)
+        {
+            defenseText.text = "DEFENSE: Lightning Trap";
         }
     }
 

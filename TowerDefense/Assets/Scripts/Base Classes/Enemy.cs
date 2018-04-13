@@ -6,7 +6,9 @@ public class Enemy : MonoBehaviour
 {
     public GameObject player;
 
-    private EnemyState state = EnemyState.Wander;
+    private EnemyState state = EnemyState.Look;
+
+    public float health;
 
     public float minDistance;
     public float maxDistance;
@@ -15,7 +17,7 @@ public class Enemy : MonoBehaviour
 
     public enum EnemyState
     {
-        Wander,
+        Look,
         Pursue,
         Stop
     }
@@ -24,11 +26,18 @@ public class Enemy : MonoBehaviour
 	void Start ()
     {
         player = GameObject.FindGameObjectWithTag("Player");
+        health = 100;
 	}
 	
 	// Update is called once per frame
 	void Update ()
     {
+        if(health < 0)
+        {
+            Destroy(gameObject);
+            // add scrap
+        }
+
         Vector2 vecToPlayer = (player.transform.position - transform.position);
         float distance = Vector2.Distance(player.transform.position, transform.position);
 
@@ -43,7 +52,7 @@ public class Enemy : MonoBehaviour
         }
         else if(distance > maxDistance)
         {
-            state = EnemyState.Wander;
+            state = EnemyState.Look;
         }
         else if (distance > 0)
         {
@@ -53,33 +62,34 @@ public class Enemy : MonoBehaviour
         // State logic
         if (state == EnemyState.Pursue)
         {
-            Debug.Log("Pursuing!");
+            //Debug.Log("Pursuing");
             speed = 2.0f;
             transform.Translate(Vector3.up * Time.deltaTime * speed);
         }
-        if (state == EnemyState.Wander)
+        if (state == EnemyState.Look)
         {
-            Debug.Log("Wandering!");
+            //Debug.Log("Looking");
             transform.rotation = Quaternion.RotateTowards(transform.rotation, quat, 180);
         }
         if(state == EnemyState.Stop)
         {
             transform.rotation = Quaternion.RotateTowards(transform.rotation, quat, 180);
         }
-
-        //float angle = Mathf.Atan2(vecToPlayer.y, vecToPlayer.x) * Mathf.Rad2Deg - 90f;
-        //Quaternion quat = Quaternion.AngleAxis(angle, Vector3.forward);
-
-        //transform.rotation = Quaternion.RotateTowards(transform.rotation, quat, 180);
-        //transform.Translate(Vector3.up * Time.deltaTime * speed);
     }
 
-    void OnTriggerEnter2D(Collider2D collision)
+    void OnTriggerEnter2D(Collider2D collider)
     {
-        if(collision.gameObject.tag == "TowerBullet" || collision.gameObject.tag == "Trap")
+        if(collider.gameObject.tag == "TowerBullet")
         {
-            Debug.Log("Colliding with bullet");
-            Destroy(gameObject);
+            health -= 20;
+            Destroy(collider.gameObject);
+            Debug.Log("Taking damage from bullet. Enemy health: " + health);
+        }
+        if(collider.gameObject.tag == "Trap")
+        {
+            health -= 50;
+            Destroy(collider.gameObject);
+            Debug.Log("Taking damage from trap. Enemy health: " + health);
         }
     }
 
