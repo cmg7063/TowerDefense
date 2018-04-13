@@ -8,6 +8,7 @@ TagManager:
   - Enemy
   - TowerBullet
   - Trap
+  - ShowOnClick
   layers:
   - Default
   - TransparentFX
