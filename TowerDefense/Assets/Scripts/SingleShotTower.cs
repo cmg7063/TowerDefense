@@ -20,7 +20,10 @@ public class SingleShotTower : MonoBehaviour {
 	void Update () {
 		if (singleShotTower.currentFireRate <= 0) {
 			singleShotTower.GetTarget (gameObject);
-			Fire();
+
+			if (singleShotTower.target) {
+				Fire();
+			}
 		}
 
 		singleShotTower.Update (Time.deltaTime);
