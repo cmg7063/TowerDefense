@@ -20,7 +20,10 @@ public class SpreadShotTower : MonoBehaviour {
 	void Update () {
 		if (spreadShotTower.currentFireRate < 0) {
 			spreadShotTower.GetTarget (gameObject);
-			Fire();
+            if(spreadShotTower.isEnemyAlive)
+            {
+    			Fire();
+            }
 		}
 
 		spreadShotTower.Update (Time.deltaTime);

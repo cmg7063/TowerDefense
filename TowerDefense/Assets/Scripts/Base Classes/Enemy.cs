@@ -76,7 +76,7 @@ public class Enemy : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.tag == "TowerBullet")
+        if(collision.gameObject.tag == "TowerBullet" || collision.gameObject.tag == "Trap")
         {
             Debug.Log("Colliding with bullet");
             Destroy(gameObject);

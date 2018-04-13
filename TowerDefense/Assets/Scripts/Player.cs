@@ -8,12 +8,21 @@ public class Player : MonoBehaviour {
     public GameObject tower1, tower2, tower3;
     private GameObject[] towers;
     private GameObject towerCurrent;
-    private int towerSelect;
-    public int scrap;
+    public static int towerSelect;
+    public static int scrap;
 
-	// Use this for initialization
-	void Start () {
+    public int score;
+
+    public int Score
+    {
+        get { return score; }
+        set { score = value; }
+    }
+
+    // Use this for initialization
+    void Start () {
         speed = 3.0f;
+        scrap = 100;
         towers = new GameObject[3];
         towers[0] = tower1;
         towers[1] = tower2;
