@@ -5,6 +5,7 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     public GameObject player;
+    public GameObject scrap;
 
     private EnemyState state = EnemyState.Look;
 
@@ -35,7 +36,7 @@ public class Enemy : MonoBehaviour
         if(health < 0)
         {
             Destroy(gameObject);
-            // add scrap
+            Instantiate(scrap, this.transform.position, this.transform.rotation);
         }
 
         Vector2 vecToPlayer = (player.transform.position - transform.position);

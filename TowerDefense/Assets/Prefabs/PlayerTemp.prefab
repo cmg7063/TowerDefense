@@ -62,7 +62,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!60 &60204314476516034
 PolygonCollider2D:
   m_ObjectHideFlags: 1
@@ -103,6 +103,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
+  tower1: {fileID: 0}
+  tower2: {fileID: 0}
+  tower3: {fileID: 0}
+  score: 0
 --- !u!212 &212401907439449546
 SpriteRenderer:
   m_ObjectHideFlags: 1

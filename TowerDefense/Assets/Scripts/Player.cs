@@ -73,4 +73,13 @@ public class Player : MonoBehaviour {
             scrap -= 50;
         }
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.gameObject.tag == "Scrap")
+        {
+            Destroy(collision.gameObject);
+            scrap += 25;
+        }
+    }
 }
