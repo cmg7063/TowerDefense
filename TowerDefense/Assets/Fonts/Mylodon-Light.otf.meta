@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: b6c6576cb3649f14e902dc77bb7e6adb
-timeCreated: 1523629889
+guid: ff5415b8e701570459d8c9143daf9e88
+timeCreated: 1524063102
 licenseType: Pro
 TrueTypeFontImporter:
   externalObjects: {}
@@ -10,9 +10,9 @@ TrueTypeFontImporter:
   characterSpacing: 0
   characterPadding: 1
   includeFontData: 1
-  fontName: Halogen by Pixel Surplus
+  fontName: Mylodon
   fontNames:
-  - Halogen by Pixel Surplus
+  - Mylodon
   fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0
