@@ -54,8 +54,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 1581751257298180, guid: 6c328fb860b344386abf31d8ddf38cc3,
     type: 2}
-  damage: 1
-  fireRate: 1
+  damage: 5
+  fireRate: 2
   bulletSpeed: 5
 --- !u!212 &212816425150569288
 SpriteRenderer:
