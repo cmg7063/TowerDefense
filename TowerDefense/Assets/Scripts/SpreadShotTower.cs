@@ -34,7 +34,9 @@ public class SpreadShotTower : MonoBehaviour {
 		for (int i = 0; i < 3; i++) {
 			float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg - 85f - (i * 5);
 			Quaternion q = Quaternion.AngleAxis(angle, Vector3.forward);
+
 			GameObject clone = bulletPrefab;
+			clone.GetComponent<Bullet> ().damage = damage;
 			clone.GetComponent<Bullet> ().speed = bulletSpeed;
 
 			Instantiate (clone, transform.position, Quaternion.RotateTowards (transform.rotation, q, 180));

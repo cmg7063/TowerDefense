@@ -7,9 +7,10 @@ TagManager:
   - Wall
   - Enemy
   - TowerBullet
-  - Trap
   - ShowOnClick
   - HideOnClick
+  - Scrap
+  - SpikeTrap
   layers:
   - Default
   - TransparentFX
@@ -19,7 +20,7 @@ TagManager:
   - UI
   - 
   - 
-  - 
+  - Traps
   - 
   - 
   - 

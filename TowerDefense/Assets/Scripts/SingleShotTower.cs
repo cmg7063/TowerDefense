@@ -36,6 +36,7 @@ public class SingleShotTower : MonoBehaviour {
 		Quaternion rotation = Quaternion.RotateTowards (transform.rotation, q, 180);
 
 		GameObject clone = bulletPrefab;
+		clone.GetComponent<Bullet> ().damage = damage;
 		clone.GetComponent<Bullet> ().speed = bulletSpeed;
 
 		Instantiate(clone, transform.position, rotation);

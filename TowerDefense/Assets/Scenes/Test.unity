@@ -1179,7 +1179,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4055576290573606, guid: 21512bef4f6a6439a8eae3a494e83352, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -5
       objectReference: {fileID: 0}
     - target: {fileID: 4055576290573606, guid: 21512bef4f6a6439a8eae3a494e83352, type: 2}
       propertyPath: m_LocalRotation.x
@@ -1200,40 +1200,6 @@ Prefab:
     - target: {fileID: 4055576290573606, guid: 21512bef4f6a6439a8eae3a494e83352, type: 2}
       propertyPath: m_RootOrder
       value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 114779289966915402, guid: 21512bef4f6a6439a8eae3a494e83352,
-        type: 2}
-      propertyPath: tower
-      value: 
-      objectReference: {fileID: 1250061298484600, guid: 34526c8493c9847d1b3952263db588dc,
-        type: 2}
-    - target: {fileID: 114779289966915402, guid: 21512bef4f6a6439a8eae3a494e83352,
-        type: 2}
-      propertyPath: tower1
-      value: 
-      objectReference: {fileID: 1250061298484600, guid: 34526c8493c9847d1b3952263db588dc,
-        type: 2}
-    - target: {fileID: 114779289966915402, guid: 21512bef4f6a6439a8eae3a494e83352,
-        type: 2}
-      propertyPath: tower2
-      value: 
-      objectReference: {fileID: 1713536240670572, guid: 081a9713bad524bb5b389d1de6f5e970,
-        type: 2}
-    - target: {fileID: 114779289966915402, guid: 21512bef4f6a6439a8eae3a494e83352,
-        type: 2}
-      propertyPath: tower3
-      value: 
-      objectReference: {fileID: 1377742900345064, guid: 796b4236f8e7842bcaff457f39f5a4bf,
-        type: 2}
-    - target: {fileID: 114779289966915402, guid: 21512bef4f6a6439a8eae3a494e83352,
-        type: 2}
-      propertyPath: scrap
-      value: 500
-      objectReference: {fileID: 0}
-    - target: {fileID: 50576819912134186, guid: 21512bef4f6a6439a8eae3a494e83352,
-        type: 2}
-      propertyPath: m_Constraints
-      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 21512bef4f6a6439a8eae3a494e83352, type: 2}

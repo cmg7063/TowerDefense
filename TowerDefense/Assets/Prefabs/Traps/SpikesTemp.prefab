@@ -22,9 +22,9 @@ GameObject:
   - component: {fileID: 212130751172590730}
   - component: {fileID: 61379584187039116}
   - component: {fileID: 114304150427446866}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SpikesTemp
-  m_TagString: Trap
+  m_TagString: SpikeTrap
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -78,6 +78,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad1e671e1383a4134bf44cf55d3af970, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damagePerSec: 5
 --- !u!212 &212130751172590730
 SpriteRenderer:
   m_ObjectHideFlags: 1

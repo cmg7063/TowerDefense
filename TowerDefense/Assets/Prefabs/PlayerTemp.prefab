@@ -37,7 +37,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1194955413261550}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 7, y: 0, z: -5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -103,9 +103,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
-  tower1: {fileID: 0}
-  tower2: {fileID: 0}
-  tower3: {fileID: 0}
+  tower1: {fileID: 1250061298484600, guid: 34526c8493c9847d1b3952263db588dc, type: 2}
+  tower2: {fileID: 1713536240670572, guid: 081a9713bad524bb5b389d1de6f5e970, type: 2}
+  tower3: {fileID: 1377742900345064, guid: 796b4236f8e7842bcaff457f39f5a4bf, type: 2}
   score: 0
 --- !u!212 &212401907439449546
 SpriteRenderer:
