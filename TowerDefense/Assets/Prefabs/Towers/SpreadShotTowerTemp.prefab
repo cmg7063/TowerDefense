@@ -78,11 +78,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4234bd25318943c09774965432ac7c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buildingName: Spread Shot Tower
+  scrapCost: 50
+  target: {fileID: 0}
   bulletPrefab: {fileID: 1581751257298180, guid: 6c328fb860b344386abf31d8ddf38cc3,
     type: 2}
   damage: 5
   fireRate: 2
-  bulletSpeed: 5
+  currentFireRate: 1
+  bulletSpeed: 7.5
 --- !u!212 &212816425150569288
 SpriteRenderer:
   m_ObjectHideFlags: 1

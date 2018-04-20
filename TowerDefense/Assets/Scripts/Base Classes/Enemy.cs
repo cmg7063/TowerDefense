@@ -24,8 +24,6 @@ public class Enemy : MonoBehaviour
 	// Use this for initialization
 	void Start () {
         player = GameObject.FindGameObjectWithTag("Player");
-//        health = 100;
-//		speed = 2.0f;
 	}
 	
 	// Update is called once per frame
@@ -76,7 +74,7 @@ public class Enemy : MonoBehaviour
 			GameObject trap = onTraps [i];
 
 			if (trap.tag == "SpikeTrap") {
-				health -= trap.GetComponent<SpikeTrap> ().damagePerSec * Time.deltaTime;
+				health -= trap.GetComponent<Trap> ().damagePerSec * Time.deltaTime;
 			}
 		}
 			

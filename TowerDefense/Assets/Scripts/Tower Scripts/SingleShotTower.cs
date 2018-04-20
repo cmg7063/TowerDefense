@@ -2,35 +2,27 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SingleShotTower : MonoBehaviour {
-	public GameObject bulletPrefab;
-
-	public float damage;
-	public float fireRate;
-	public float bulletSpeed;
-
-	private Tower singleShotTower;
-
+public class SingleShotTower : Tower {
 	// Use this for initialization
 	void Start () {
-		singleShotTower = new Tower (damage, fireRate, bulletSpeed);
+		
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		if (singleShotTower.currentFireRate <= 0) {
-			singleShotTower.GetTarget (gameObject);
+		if (currentFireRate <= 0) {
+			GetTarget (gameObject);
 
-			if (singleShotTower.target) {
+			if (target) {
 				Fire();
 			}
 		}
 
-		singleShotTower.Update (Time.deltaTime);
+		currentFireRate -= Time.deltaTime;
 	}
 
 	private void Fire() {
-		Vector3 dir = singleShotTower.target.transform.position - transform.position;
+		Vector3 dir = target.transform.position - transform.position;
 		float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg - 90f;
 		Quaternion q = Quaternion.AngleAxis(angle, Vector3.forward);
 		Quaternion rotation = Quaternion.RotateTowards (transform.rotation, q, 180);
@@ -41,6 +33,6 @@ public class SingleShotTower : MonoBehaviour {
 
 		Instantiate(clone, transform.position, rotation);
 
-		singleShotTower.resetFireRate ();
+		resetFireRate ();
 	}
 }

@@ -78,7 +78,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad1e671e1383a4134bf44cf55d3af970, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buildingName: TBD
+  scrapCost: 25
   damagePerSec: 5
+  damagePerSecTemp: 0
+  scrapCostTemp: 0
 --- !u!212 &212130751172590730
 SpriteRenderer:
   m_ObjectHideFlags: 1

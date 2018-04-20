@@ -2,34 +2,26 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpreadShotTower : MonoBehaviour {
-	public GameObject bulletPrefab;
-
-	public float damage;
-	public float fireRate;
-	public float bulletSpeed;
-
-	private Tower spreadShotTower;
-
+public class SpreadShotTower : Tower {
 	// Use this for initialization
 	void Start () {
-		spreadShotTower = new Tower (damage, fireRate, bulletSpeed);
+		
 	}
 
 	// Update is called once per frame
 	void Update () {
-		if (spreadShotTower.currentFireRate < 0) {
-			spreadShotTower.GetTarget (gameObject);
-			if (spreadShotTower.target) {
+		if (currentFireRate < 0) {
+			GetTarget (gameObject);
+			if (target) {
 				Fire();
 			}
 		}
 
-		spreadShotTower.Update (Time.deltaTime);
+		currentFireRate -= Time.deltaTime;
 	}
 
 	void Fire() {
-		Vector3 dir = spreadShotTower.target.transform.position - transform.position;
+		Vector3 dir = target.transform.position - transform.position;
 
 		for (int i = 0; i < 3; i++) {
 			float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg - 85f - (i * 5);
@@ -42,6 +34,6 @@ public class SpreadShotTower : MonoBehaviour {
 			Instantiate (clone, transform.position, Quaternion.RotateTowards (transform.rotation, q, 180));
 		}
 
-		spreadShotTower.resetFireRate ();
+		resetFireRate ();
 	}
 }

@@ -78,11 +78,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78c832ae9aa12437483fdb14a85575c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buildingName: Single Shot Tower
+  scrapCost: 25
+  target: {fileID: 0}
   bulletPrefab: {fileID: 1581751257298180, guid: 6c328fb860b344386abf31d8ddf38cc3,
     type: 2}
-  damage: 5
+  damage: 10
   fireRate: 1
-  bulletSpeed: 10
+  currentFireRate: 1
+  bulletSpeed: 15
 --- !u!212 &212792833295720634
 SpriteRenderer:
   m_ObjectHideFlags: 1

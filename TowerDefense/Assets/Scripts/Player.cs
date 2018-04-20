@@ -44,7 +44,6 @@ public class Player : MonoBehaviour {
 
         health = 100;
 		scrap = 100;
-        speed = 3.0f;
 
 		facingLeft = false;
         facingRight = true;
@@ -71,10 +70,8 @@ public class Player : MonoBehaviour {
         Flip(horizontal);
     }
 
-    void Flip(float horizontal)
-    {
-        if(horizontal > 0 && !facingRight || horizontal < 0 && facingRight)
-        {
+    void Flip(float horizontal) {
+        if(horizontal > 0 && !facingRight || horizontal < 0 && facingRight) {
             facingRight = !facingRight;
             Vector3 thisScale = transform.localScale;
             thisScale.x *= -1;
@@ -100,21 +97,17 @@ public class Player : MonoBehaviour {
 
     void InputHandler(float horizontal) {
         // Movement Inputs WASD
-        if (Input.GetKey(KeyCode.W))
-        {
+        if (Input.GetKey(KeyCode.W)) {
             transform.Translate(0, speed * Time.deltaTime, 0);
         }
-        if (Input.GetKey(KeyCode.S))
-        {
+        if (Input.GetKey(KeyCode.S)) {
             transform.Translate(0, -speed * Time.deltaTime, 0);
         }
-        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
-        {
+        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow)) {
 			facingLeft = true;
 			transform.Translate(-speed * Time.deltaTime, 0, 0);
         }
-        if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
-        {
+        if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow)) {
 			facingLeft = false;
 			transform.Translate(speed * Time.deltaTime, 0, 0);
         }
@@ -122,26 +115,25 @@ public class Player : MonoBehaviour {
         myAnimator.SetFloat("moveSpeed", Mathf.Abs(horizontal));
 
         // Tower Inputs
-        if (Input.GetKeyUp(KeyCode.Tab))
-        {
+        if (Input.GetKeyUp(KeyCode.Tab)) {
             myAnimator.SetBool("buildKey", true);
             towerSelect += 1;
-			if(towerSelect >= towers.Length)
-            {
+			if (towerSelect >= towers.Length) {
 				towerSelect = 0;
 			}
 
 			towerCurrent = towers[towerSelect];
 		}
-		if (Input.GetKeyUp(KeyCode.E))
-        {
+		if (Input.GetKeyUp(KeyCode.E)) {
 			PlaceTower();
             myAnimator.SetBool("buildKey", false);
         }
     }
 
     void PlaceTower() {
-		if (scrap >= 50 && validLocation) {
+		int scrapCost = towerCurrent.GetComponent<Buildable> ().scrapCost;
+
+		if (scrap >= scrapCost && validLocation) {
 			Vector3 position = gameObject.transform.position;
 			float xOffset = 1.0f;
 			if (facingLeft) {
@@ -153,19 +145,21 @@ public class Player : MonoBehaviour {
 			position.z = -2;
 
 			Instantiate(towerCurrent, position, gameObject.transform.rotation);
-            scrap -= 50;
+			scrap -= scrapCost;
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision) {
-        if (collision.gameObject.tag == "Scrap") {
-            Destroy(collision.gameObject);
-            scrap += 25;
+	private void OnTriggerEnter2D(Collider2D collider) {
+		if (collider.gameObject.tag == "Scrap") {
+//			collider.gameObject.GetComponent<>(Enemy).scrapValue += 25;
+			scrap += 25;
+
+			Destroy(collider.gameObject);
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision) {
-        if (collision.gameObject.tag == "Enemy") {
+	private void OnCollisionEnter2D(Collision2D collider) {
+		if (collider.gameObject.tag == "Enemy") {
             if (iFrames == false) {
                 health -= 20;
                 iFrames = true;
