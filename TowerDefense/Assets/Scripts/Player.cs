@@ -10,13 +10,18 @@ public class Player : MonoBehaviour {
     private GameObject towerCurrent;
     public static int towerSelect;
 
+    private Animator myAnimator;
+    private Rigidbody2D myRigidbody;
+
     public int score;
 
     public static int health;
 	public static int scrap;
 	public float speed;
 	public bool validLocation;
+
 	public bool facingLeft;
+    private bool facingRight;
 
     public bool iFrames;
     public float iFrameTime;
@@ -39,22 +44,42 @@ public class Player : MonoBehaviour {
 
         health = 100;
 		scrap = 100;
-		speed = 3.0f;
+        speed = 3.0f;
+
 		facingLeft = false;
+        facingRight = true;
 
         iFrames = false;
         iFrameTime = 5.0f;
         iTimer = 0.0f;
-	}
-	
-	// Update is called once per frame
-	void Update () {
+
+        myAnimator = GetComponent <Animator>();
+        myRigidbody = GetComponent<Rigidbody2D>();
+    }
+
+    // Update is called once per frame
+    void Update () {
         if (health <= 0) {
             SceneManager.LoadScene("GameOver"); 
         }
 
+        float horizontal = Input.GetAxis("Horizontal");
+
 		PlayerHit ();
-		InputHandler ();
+		InputHandler (horizontal);
+
+        Flip(horizontal);
+    }
+
+    void Flip(float horizontal)
+    {
+        if(horizontal > 0 && !facingRight || horizontal < 0 && facingRight)
+        {
+            facingRight = !facingRight;
+            Vector3 thisScale = transform.localScale;
+            thisScale.x *= -1;
+            transform.localScale = thisScale;
+        }
     }
 
 	void PlayerHit() {
@@ -73,19 +98,19 @@ public class Player : MonoBehaviour {
 		}
 	}
 
-	void InputHandler() {
-		// Movement Inputs WASD
-		if (Input.GetKey(KeyCode.W)) {
-			transform.Translate(0, speed * Time.deltaTime, 0);
-		}
-		if (Input.GetKey(KeyCode.S)) {
-			transform.Translate(0, -speed * Time.deltaTime, 0);
-		}
-		if (Input.GetKey(KeyCode.A)) {
+    void InputHandler(float horizontal) {
+        // Movement Inputs WASD
+        if (Input.GetKey(KeyCode.W)) {
+            transform.Translate(0, speed * Time.deltaTime, 0);
+        }
+        if (Input.GetKey(KeyCode.S)) {
+            transform.Translate(0, -speed * Time.deltaTime, 0);
+        }
+        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow)) {
 			facingLeft = true;
 			transform.Translate(-speed * Time.deltaTime, 0, 0);
 		}
-		if (Input.GetKey(KeyCode.D)) {
+		if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow)) {
 			facingLeft = false;
 			transform.Translate(speed * Time.deltaTime, 0, 0);
 		}
@@ -102,6 +127,8 @@ public class Player : MonoBehaviour {
 		if (Input.GetKeyUp(KeyCode.E)) {
 			PlaceTower();
 		}
+
+        myAnimator.SetFloat("moveSpeed", Mathf.Abs(horizontal));
 	}
 
     void PlaceTower() {

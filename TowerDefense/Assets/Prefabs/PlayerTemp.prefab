@@ -21,8 +21,9 @@ GameObject:
   - component: {fileID: 4055576290573606}
   - component: {fileID: 212401907439449546}
   - component: {fileID: 50576819912134186}
-  - component: {fileID: 60204314476516034}
   - component: {fileID: 114779289966915402}
+  - component: {fileID: 61074204027325024}
+  - component: {fileID: 95879780213420894}
   m_Layer: 0
   m_Name: PlayerTemp
   m_TagString: Player
@@ -63,8 +64,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!60 &60204314476516034
-PolygonCollider2D:
+--- !u!61 &61074204027325024
+BoxCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -75,22 +76,36 @@ PolygonCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.035283566, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 1.94, y: 1.97}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: 0, y: 0.5}
-      - {x: -0.5, y: -0.000000021855694}
-      - {x: 0.00000004371139, y: -0.5}
-      - {x: 0.5, y: 0.0000000059624403}
+  serializedVersion: 2
+  m_Size: {x: 1.6153898, y: 1.97}
+  m_EdgeRadius: 0
+--- !u!95 &95879780213420894
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1194955413261550}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f0ed419e896b8784aa15358b41932678, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &114779289966915402
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -102,12 +117,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d0f7af46cb340e4abe9cdf64f4b690a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
   tower1: {fileID: 1250061298484600, guid: 34526c8493c9847d1b3952263db588dc, type: 2}
   tower2: {fileID: 1713536240670572, guid: 081a9713bad524bb5b389d1de6f5e970, type: 2}
   tower3: {fileID: 1377742900345064, guid: 796b4236f8e7842bcaff457f39f5a4bf, type: 2}
   tower4: {fileID: 0}
   score: 0
+  speed: 10
+  validLocation: 0
+  facingLeft: 0
   iFrames: 0
   iFrameTime: 0
   iTimer: 0
@@ -145,8 +162,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: ca1ef8d5d7ca34791a8c9c5d74135c35, type: 3}
-  m_Color: {r: 0, g: 0.6985294, b: 0.17824532, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 5497a329addbd40408fd472113e94e38, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
