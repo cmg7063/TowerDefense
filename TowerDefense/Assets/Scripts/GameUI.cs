@@ -23,7 +23,9 @@ public class GameUI : MonoBehaviour
         scrapText.text = "SCRAP: ";
         waveText.text = "WAVE: ";
         defenseText.text = "DEFENSE: ";
-        healthText.text = "HEALTH: ";
+
+		// CAUSING ERRORS
+//        healthText.text = "HEALTH: ";
     }
 
     // Update is called once per frame
@@ -32,7 +34,8 @@ public class GameUI : MonoBehaviour
         //waveText.text = GameController.Wave.name;
         scrapText.text = "SCRAP: " + Player.scrap;
 
-        healthText.text = "HEALTH: " + Player.health;
+		// CAUSING ERRORS
+//        healthText.text = "HEALTH: " + Player.health;
 
         if (Player.towerSelect == 0)
         {

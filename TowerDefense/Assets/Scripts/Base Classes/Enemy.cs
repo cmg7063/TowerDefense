@@ -81,7 +81,7 @@ public class Enemy : MonoBehaviour
 		}
 			
 		if (onTraps.Count > 0) {
-			Debug.Log ("Enemy is taking daamge from " + onTraps.Count + " traps");
+//			Debug.Log ("Enemy is taking daamge from " + onTraps.Count + " traps");
 		}
 	}
 
@@ -91,7 +91,7 @@ public class Enemy : MonoBehaviour
 			health -= collider.gameObject.GetComponent<Bullet> ().damage;
             Destroy(collider.gameObject);
 
-            Debug.Log("Taking damage from bullet. Enemy health: " + health);
+//            Debug.Log("Taking damage from bullet. Enemy health: " + health);
         }
 
 		// check by layers
@@ -99,7 +99,7 @@ public class Enemy : MonoBehaviour
 		if (collider.gameObject.layer == trapLayer) {
 			onTraps.Add (collider.gameObject);
 
-            Debug.Log("Enemy is on a trap.");
+//            Debug.Log("Enemy is on a trap.");
         }
     }
 
@@ -119,7 +119,7 @@ public class Enemy : MonoBehaviour
 			if (index >= 0 && index < onTraps.Count) {
 				onTraps.RemoveAt (index);
 
-				Debug.Log ("Enemy is off a trap.");
+//				Debug.Log ("Enemy is off a trap.");
 			}
 		}
 	}
