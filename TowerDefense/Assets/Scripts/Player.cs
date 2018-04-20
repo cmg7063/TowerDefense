@@ -100,36 +100,45 @@ public class Player : MonoBehaviour {
 
     void InputHandler(float horizontal) {
         // Movement Inputs WASD
-        if (Input.GetKey(KeyCode.W)) {
+        if (Input.GetKey(KeyCode.W))
+        {
             transform.Translate(0, speed * Time.deltaTime, 0);
         }
-        if (Input.GetKey(KeyCode.S)) {
+        if (Input.GetKey(KeyCode.S))
+        {
             transform.Translate(0, -speed * Time.deltaTime, 0);
         }
-        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow)) {
+        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
+        {
 			facingLeft = true;
 			transform.Translate(-speed * Time.deltaTime, 0, 0);
-		}
-		if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow)) {
+        }
+        if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
+        {
 			facingLeft = false;
 			transform.Translate(speed * Time.deltaTime, 0, 0);
-		}
+        }
 
-		// Tower Inputs
-		if (Input.GetKeyUp(KeyCode.Tab)) {
-			towerSelect += 1;
-			if(towerSelect >= towers.Length) {
+        myAnimator.SetFloat("moveSpeed", Mathf.Abs(horizontal));
+
+        // Tower Inputs
+        if (Input.GetKeyUp(KeyCode.Tab))
+        {
+            myAnimator.SetBool("buildKey", true);
+            towerSelect += 1;
+			if(towerSelect >= towers.Length)
+            {
 				towerSelect = 0;
 			}
 
 			towerCurrent = towers[towerSelect];
 		}
-		if (Input.GetKeyUp(KeyCode.E)) {
+		if (Input.GetKeyUp(KeyCode.E))
+        {
 			PlaceTower();
-		}
-
-        myAnimator.SetFloat("moveSpeed", Mathf.Abs(horizontal));
-	}
+            myAnimator.SetBool("buildKey", false);
+        }
+    }
 
     void PlaceTower() {
 		if (scrap >= 50 && validLocation) {
