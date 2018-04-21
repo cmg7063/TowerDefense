@@ -37,18 +37,15 @@ public class GameUI : MonoBehaviour
 		// CAUSING ERRORS
 //        healthText.text = "HEALTH: " + Player.health;
 
-        if (Player.towerSelect == 0)
-        {
-            defenseText.text = "DEFENSE: Single Shot Tower";
-        }
-        if (Player.towerSelect == 1)
-        {
-            defenseText.text = "DEFENSE: Spread Shot Tower";
-        }
-        if (Player.towerSelect == 2)
-        {
-            defenseText.text = "DEFENSE: Lightning Trap";
-        }
+		if (Player.towerSelect == 0) {
+			defenseText.text = "DEFENSE: Single Shot Tower";
+		} else if (Player.towerSelect == 1) {
+			defenseText.text = "DEFENSE: Spread Shot Tower";
+		} else if (Player.towerSelect == 2) {
+			defenseText.text = "DEFENSE: Pulse Tower";
+		} else if (Player.towerSelect == 3) {
+			defenseText.text = "DEFENSE: Lightning Trap";
+		}
     }
 
     void hideText()

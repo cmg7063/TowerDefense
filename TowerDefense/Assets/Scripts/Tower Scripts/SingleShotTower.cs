@@ -13,12 +13,17 @@ public class SingleShotTower : Tower {
 		if (currentFireRate <= 0) {
 			GetTarget (gameObject);
 
-			if (target) {
-				Fire();
+			// if target found and distnace is within sight range
+			if (target && Vector2.Distance(gameObject.transform.position, target.transform.position) <= sightRange) {
+				Fire ();
 			}
+		} else {
+			currentFireRate -= Time.deltaTime;
 		}
+	}
 
-		currentFireRate -= Time.deltaTime;
+	private void checkDistance() {
+		
 	}
 
 	private void Fire() {
@@ -30,6 +35,7 @@ public class SingleShotTower : Tower {
 		GameObject clone = bulletPrefab;
 		clone.GetComponent<Bullet> ().damage = damage;
 		clone.GetComponent<Bullet> ().speed = bulletSpeed;
+		clone.GetComponent<Bullet> ().life = bulletLife;
 
 		Instantiate(clone, transform.position, rotation);
 

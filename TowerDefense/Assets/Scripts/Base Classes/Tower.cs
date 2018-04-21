@@ -10,23 +10,29 @@ public class Tower : Buildable {
 	public float fireRate;
 	public float currentFireRate;
 	public float bulletSpeed;
+	public float bulletLife;
+	public float sightRange;
 
 	public Tower() {
 		this.buildingName = "TBD";
+		this.scrapCost = 1;
 		this.damage = 1;
 		this.fireRate = 1;
 		this.currentFireRate = 1;
 		this.bulletSpeed = 1;
-		this.scrapCost = 1;
+		this.bulletLife = 1;
+		this.sightRange = 1;
 	}
 
-	public Tower(string name, float damage, float fireRate, float bulletSpeed, int scrapCost) {
+	public Tower(string name, int scrapCost,  float damage, float fireRate, float bulletSpeed, float bulletLife, float sightRange) {
 		this.buildingName = name;
+		this.scrapCost = scrapCost;
 		this.damage = damage;
 		this.fireRate = fireRate;
 		this.currentFireRate = fireRate;
 		this.bulletSpeed = bulletSpeed;
-		this.scrapCost = scrapCost;
+		this.bulletLife = bulletLife;
+		this.sightRange = sightRange;
 	}
 
 	public void resetFireRate() {

@@ -34,11 +34,11 @@ public class Player : MonoBehaviour {
 
     // Use this for initialization
 	void Start () {
-        towers = new GameObject[3];
+        towers = new GameObject[4];
         towers[0] = tower1;
         towers[1] = tower2;
         towers[2] = tower3;
-        //towers[3] = tower4;
+        towers[3] = tower4;
         towerCurrent = tower1;
         towerSelect = 0;
 
