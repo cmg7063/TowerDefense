@@ -20,8 +20,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4391794799203642}
   - component: {fileID: 212411247795043144}
-  - component: {fileID: 61588649740255350}
   - component: {fileID: 114818286801739248}
+  - component: {fileID: 61588649740255350}
   m_Layer: 9
   m_Name: PulseShotTowerTemp
   m_TagString: Untagged
@@ -86,7 +86,8 @@ MonoBehaviour:
   damage: 3
   fireRate: 2
   currentFireRate: 1
-  bulletSpeed: 5
+  bulletSpeed: 2.5
+  bulletLife: 2
   sightRange: 1
 --- !u!212 &212411247795043144
 SpriteRenderer:

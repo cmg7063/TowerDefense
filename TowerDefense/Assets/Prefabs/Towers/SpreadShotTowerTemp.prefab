@@ -87,7 +87,8 @@ MonoBehaviour:
   fireRate: 2
   currentFireRate: 1
   bulletSpeed: 7.5
-  sightRange: 20
+  bulletLife: 5
+  sightRange: 15
 --- !u!212 &212816425150569288
 SpriteRenderer:
   m_ObjectHideFlags: 1
