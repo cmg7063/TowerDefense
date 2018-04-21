@@ -45,6 +45,8 @@ public class GameUI : MonoBehaviour
 			defenseText.text = "DEFENSE: Pulse Tower";
 		} else if (Player.towerSelect == 3) {
 			defenseText.text = "DEFENSE: Lightning Trap";
+		} else if (Player.towerSelect == 4) {
+			defenseText.text = "DEFENSE: Flame Trap";
 		}
     }
 

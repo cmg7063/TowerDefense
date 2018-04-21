@@ -20,8 +20,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4434309820082792}
   - component: {fileID: 212130751172590730}
-  - component: {fileID: 61379584187039116}
   - component: {fileID: 114304150427446866}
+  - component: {fileID: 61379584187039116}
   m_Layer: 8
   m_Name: SpikesTemp
   m_TagString: SpikeTrap
@@ -36,7 +36,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1377742900345064}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.5, y: 2.5, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -2}
   m_LocalScale: {x: 0.9, y: 0.9, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -80,9 +80,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buildingName: TBD
   scrapCost: 25
-  damagePerSec: 5
-  damagePerSecTemp: 0
-  scrapCostTemp: 0
+  damagePerSec: 7.5
 --- !u!212 &212130751172590730
 SpriteRenderer:
   m_ObjectHideFlags: 1

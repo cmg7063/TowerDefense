@@ -85,7 +85,7 @@ MonoBehaviour:
     type: 2}
   damage: 5
   fireRate: 2
-  currentFireRate: 1
+  currentFireRate: 2
   bulletSpeed: 7.5
   bulletLife: 5
   sightRange: 15

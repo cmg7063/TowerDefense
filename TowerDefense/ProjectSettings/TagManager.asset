@@ -11,6 +11,8 @@ TagManager:
   - HideOnClick
   - Scrap
   - SpikeTrap
+  - FlameTrap
+  - Flame
   layers:
   - Default
   - TransparentFX
