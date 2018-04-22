@@ -15,6 +15,12 @@ public class GameUI : MonoBehaviour
 
     private GameObject instructionPane;
 
+    public Image box1;
+    public Image box2;
+    public Image box3;
+    public Image box4;
+    public Image box5;
+
     // Use this for initialization
     void Start ()
     {
@@ -23,9 +29,7 @@ public class GameUI : MonoBehaviour
         scrapText.text = "SCRAP: ";
         waveText.text = "WAVE: ";
         defenseText.text = "DEFENSE: ";
-
-		// CAUSING ERRORS
-//        healthText.text = "HEALTH: ";
+        healthText.text = "HEALTH: ";
     }
 
     // Update is called once per frame
@@ -33,21 +37,30 @@ public class GameUI : MonoBehaviour
     {
         //waveText.text = GameController.Wave.name;
         scrapText.text = "SCRAP: " + Player.scrap;
-
-		// CAUSING ERRORS
-//        healthText.text = "HEALTH: " + Player.health;
+        
+        healthText.text = "HEALTH: " + Player.health;
 
 		if (Player.towerSelect == 0) {
-			defenseText.text = "DEFENSE: Single Shot Tower";
+			defenseText.text = "DEFENSE: Single Shot Tower\nShoots a single, fast bullet.\nScrap Cost: 25";
+            box5.GetComponent<Image>().color = Color.black;
+            box1.GetComponent<Image>().color = Color.white;
 		} else if (Player.towerSelect == 1) {
-			defenseText.text = "DEFENSE: Spread Shot Tower";
-		} else if (Player.towerSelect == 2) {
-			defenseText.text = "DEFENSE: Pulse Tower";
-		} else if (Player.towerSelect == 3) {
-			defenseText.text = "DEFENSE: Lightning Trap";
-		} else if (Player.towerSelect == 4) {
-			defenseText.text = "DEFENSE: Flame Trap";
-		}
+			defenseText.text = "DEFENSE: Spread Shot Tower\nShoots three bullets in spread.\nScrap Cost: 50";
+            box1.GetComponent<Image>().color = Color.black;
+            box2.GetComponent<Image>().color = Color.white;
+        } else if (Player.towerSelect == 2) {
+			defenseText.text = "DEFENSE: Pulse Tower\nShoots eight bullets around tower.\nScrap Cost: 75";
+            box2.GetComponent<Image>().color = Color.black;
+            box3.GetComponent<Image>().color = Color.white;
+        } else if (Player.towerSelect == 3) {
+			defenseText.text = "DEFENSE: Lightning Trap\nSmall damage to enemies walking on it.\nScrap Cost: 25";
+            box3.GetComponent<Image>().color = Color.black;
+            box4.GetComponent<Image>().color = Color.white;
+        } else if (Player.towerSelect == 4) {
+			defenseText.text = "DEFENSE: Flame Trap\nShoots fire four ways around trap.\nScrap Cost: 50";
+            box4.GetComponent<Image>().color = Color.black;
+            box5.GetComponent<Image>().color = Color.white;
+        }
     }
 
     void hideText()

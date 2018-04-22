@@ -103,8 +103,8 @@ MonoBehaviour:
   scrap: {fileID: 1878330716193628, guid: d32b845730c1865409edc770d00ca248, type: 2}
   health: 50
   speed: 2
-  minDistance: 2
-  maxDistance: 20
+  minDistance: 1
+  maxDistance: 30
 --- !u!212 &212227477922126926
 SpriteRenderer:
   m_ObjectHideFlags: 1
