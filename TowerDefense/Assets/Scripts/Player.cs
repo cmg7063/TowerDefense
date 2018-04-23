@@ -104,11 +104,11 @@ public class Player : MonoBehaviour {
         if (Input.GetKey(KeyCode.S)) {
             transform.Translate(0, -speed * Time.deltaTime, 0);
         }
-        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow)) {
+        if (Input.GetKey(KeyCode.A)) {
 			facingLeft = true;
 			transform.Translate(-speed * Time.deltaTime, 0, 0);
         }
-        if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow)) {
+        if (Input.GetKey(KeyCode.D)) {
 			facingLeft = false;
 			transform.Translate(speed * Time.deltaTime, 0, 0);
         }
@@ -116,7 +116,7 @@ public class Player : MonoBehaviour {
         myAnimator.SetFloat("moveSpeed", Mathf.Abs(horizontal));
 
         // Tower Inputs
-        if (Input.GetKeyUp(KeyCode.Tab)) {
+        if (Input.GetKeyUp(KeyCode.RightArrow)) {
             myAnimator.SetBool("buildKey", true);
             towerSelect += 1;
 			if (towerSelect >= towers.Length) {
@@ -125,8 +125,25 @@ public class Player : MonoBehaviour {
 
 			towerCurrent = towers[towerSelect];
 		}
-		if (Input.GetKeyUp(KeyCode.E)) {
+		if (Input.GetKeyUp(KeyCode.Space)) {
 			PlaceTower();
+            myAnimator.SetBool("buildKey", false);
+        }
+
+        if (Input.GetKeyUp(KeyCode.LeftArrow))
+        {
+            myAnimator.SetBool("buildKey", true);
+            towerSelect -= 1;
+            if (towerSelect < 0)
+            {
+                towerSelect = towers.Length - 1;
+            }
+
+            towerCurrent = towers[towerSelect];
+        }
+        if (Input.GetKeyUp(KeyCode.Space))
+        {
+            PlaceTower();
             myAnimator.SetBool("buildKey", false);
         }
     }
