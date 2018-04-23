@@ -19,7 +19,8 @@ public class GameUI : MonoBehaviour
     public Image box2;
     public Image box3;
     public Image box4;
-    public Image box5;
+	public Image box5;
+    public Image box6;
 
     // Use this for initialization
     void Start ()
@@ -64,8 +65,13 @@ public class GameUI : MonoBehaviour
 			defenseText.text = "DEFENSE: Flame Trap\nShoots fire four ways around trap.\nScrap Cost: 50";
             box4.GetComponent<Image>().color = Color.black;
             box5.GetComponent<Image>().color = Color.white;
-            box1.GetComponent<Image>().color = Color.black;
-        }
+            box6.GetComponent<Image>().color = Color.black;
+		} else if (Player.towerSelect == 5) {
+			defenseText.text = "DEFENSE: Laser Trap\nFires piercing laser.\nScrap Cost: 75";
+			box5.GetComponent<Image>().color = Color.black;
+			box6.GetComponent<Image>().color = Color.white;
+			box1.GetComponent<Image>().color = Color.black;
+		}
     }
 
     void hideText()

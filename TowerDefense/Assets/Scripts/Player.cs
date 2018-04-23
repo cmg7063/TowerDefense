@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour {
 
-    public GameObject tower1, tower2, tower3, tower4, tower5;
+    public GameObject tower1, tower2, tower3, tower4, tower5, tower6;
     private GameObject[] towers;
     private GameObject towerCurrent;
     public static int towerSelect;
@@ -34,12 +34,14 @@ public class Player : MonoBehaviour {
 
     // Use this for initialization
 	void Start () {
-        towers = new GameObject[5];
+        towers = new GameObject[6];
         towers[0] = tower1;
         towers[1] = tower2;
         towers[2] = tower3;
 		towers[3] = tower4;
-        towers[4] = tower5;
+		towers[4] = tower5;
+        towers[5] = tower6;
+
         towerCurrent = tower1;
         towerSelect = 0;
 

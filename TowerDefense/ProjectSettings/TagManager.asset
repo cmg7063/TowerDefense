@@ -13,6 +13,13 @@ TagManager:
   - SpikeTrap
   - FlameTrap
   - Flame
+  - Box3
+  - Box1
+  - Box5
+  - Box2
+  - Box4
+  - LaserTrap
+  - Laser
   layers:
   - Default
   - TransparentFX

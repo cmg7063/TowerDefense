@@ -78,7 +78,13 @@ public class Enemy : MonoBehaviour
 			} else if (trap.tag == "Flame") {
 				FlameTrap trapScript = trap.gameObject.transform.parent.gameObject.GetComponent<FlameTrap> ();
 
-				if (trapScript.active) {
+				if (trapScript.isActive) {
+					health -= trapScript.damagePerSec * Time.deltaTime;
+				}
+			} else if (trap.tag == "Laser") {
+				LaserTrap trapScript = trap.gameObject.transform.parent.gameObject.GetComponent<LaserTrap> ();
+
+				if (trapScript.isActive) {
 					health -= trapScript.damagePerSec * Time.deltaTime;
 				}
 			}
@@ -91,13 +97,17 @@ public class Enemy : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collider) {
 		// check by tags
-        if (collider.gameObject.tag == "TowerBullet") {
+		if (collider.gameObject.tag == "TowerBullet") {
 			health -= collider.gameObject.GetComponent<Bullet> ().damage;
-            Destroy(collider.gameObject);
+			Destroy (collider.gameObject);
 
 //            Debug.Log("Taking damage from bullet. Enemy health: " + health);
 		} else if (collider.gameObject.tag == "Flame") {
 			onTraps.Add (collider.gameObject);
+		} else if (collider.gameObject.tag == "Laser") {
+			onTraps.Add (collider.gameObject);
+
+			Debug.Log("Enemy is on a trap.");
 		}
 
 		// check by layers
@@ -112,6 +122,21 @@ public class Enemy : MonoBehaviour
 	void OnTriggerExit2D(Collider2D collider) {
 		// check by tags
 		if (collider.gameObject.tag == "Flame") {
+			// remove enemy object
+			int index = -1;
+			for (int i = 0; i < onTraps.Count; i++) {
+				index = i;
+				if (onTraps [i].GetInstanceID () == collider.transform.GetInstanceID ())
+					break;
+			}
+
+			// ocurrence was found
+			if (index >= 0 && index < onTraps.Count) {
+				onTraps.RemoveAt (index);
+
+				//				Debug.Log ("Enemy is off a trap.");
+			}
+		} else if (collider.gameObject.tag == "Laser") {
 			// remove enemy object
 			int index = -1;
 			for (int i = 0; i < onTraps.Count; i++) {

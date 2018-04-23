@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class FlameTrap : Trap {
-	public bool active;
+	public bool isActive;
 	public float fireRate;
 	private float currentFireRate;
 	public float flameLife;
@@ -11,7 +11,7 @@ public class FlameTrap : Trap {
 
 	// Use this for initialization
 	void Start () {
-		active = false;
+		isActive = false;
 		currentFireRate = fireRate;
 		currentFlameLife = 0;
 	}
@@ -19,18 +19,18 @@ public class FlameTrap : Trap {
 	// Update is called once per frame
 	void Update () {
 		if (currentFlameLife <= 0 && currentFireRate <= 0) {
-			active = true;
+			isActive = true;
 
 			currentFireRate = fireRate;
 			currentFlameLife = flameLife;
 		} else if (currentFlameLife > 0) {
 			currentFlameLife -= Time.deltaTime;
 		} else {
-			active = false;
+			isActive = false;
 			currentFireRate -= Time.deltaTime;
 		}
 
-		if (active) {
+		if (isActive) {
 			foreach (Transform child in transform) {
 				Color visible = child.gameObject.GetComponent<SpriteRenderer> ().color;
 				visible.a = 1;

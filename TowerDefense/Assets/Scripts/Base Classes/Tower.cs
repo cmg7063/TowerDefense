@@ -45,8 +45,8 @@ public class Tower : Buildable {
 		float distance = Mathf.Infinity;
 
 	    foreach (GameObject enemy in enemies) {
-            Vector3 diff = enemy.transform.position - currentObject.transform.position;
-		    float curDistance = diff.sqrMagnitude;
+			float curDistance = Vector2.Distance (enemy.transform.position, currentObject.transform.position);
+
 		    if (curDistance < distance) {
 			    closest = enemy;
 			    distance = curDistance;
