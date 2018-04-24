@@ -65,11 +65,11 @@ public class GameUI : MonoBehaviour
 			defenseText.text = "DEFENSE: Flame Trap\nShoots fire four ways around trap.\nScrap Cost: 50";
             box4.GetComponent<Image>().color = Color.black;
             box5.GetComponent<Image>().color = Color.white;
-            box6.GetComponent<Image>().color = Color.black;
+            //box6.GetComponent<Image>().color = Color.black;
 		} else if (Player.towerSelect == 5) {
 			defenseText.text = "DEFENSE: Laser Trap\nFires piercing laser.\nScrap Cost: 75";
 			box5.GetComponent<Image>().color = Color.black;
-			box6.GetComponent<Image>().color = Color.white;
+			//box6.GetComponent<Image>().color = Color.white;
 			box1.GetComponent<Image>().color = Color.black;
 		}
     }

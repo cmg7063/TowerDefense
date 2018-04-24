@@ -176,6 +176,11 @@ public class Player : MonoBehaviour {
 
 			Destroy(collider.gameObject);
         }
+        if(collider.gameObject.tag == "EnemyBullet")
+        {
+            health -= 10;
+            Debug.Log("collision with enemy bullet. Health: " + health);
+        }
     }
 
 	private void OnCollisionEnter2D(Collision2D collider) {

@@ -20,6 +20,7 @@ TagManager:
   - Box4
   - LaserTrap
   - Laser
+  - EnemyBullet
   layers:
   - Default
   - TransparentFX

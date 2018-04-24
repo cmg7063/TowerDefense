@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 58779491679142760}
   - component: {fileID: 114293462056068836}
   m_Layer: 0
-  m_Name: BulletTemp
+  m_Name: PlayerBullet
   m_TagString: TowerBullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour
+abstract public class Enemy : MonoBehaviour
 {
     public GameObject player;
     public GameObject scrap;
@@ -14,62 +14,39 @@ public class Enemy : MonoBehaviour
     public float minDistance;
     public float maxDistance;
 
-	private EnemyState state = EnemyState.Look;
-    public enum EnemyState {
+	public EnemyState state = EnemyState.Look;
+    public enum EnemyState
+    {
         Look,
         Pursue,
+        Attack,
+        Shoot,
         Stop
     }
 
 	// Use this for initialization
-	void Start () {
+	virtual public void Start ()
+    {
         player = GameObject.FindGameObjectWithTag("Player");
 	}
 	
 	// Update is called once per frame
-	void Update () {
-        if (health <= 0) {
+	protected void Update ()
+    {
+        if (health <= 0)
+        {
             Destroy(gameObject);
             Instantiate(scrap, this.transform.position, this.transform.rotation);
         }
 
 		UpdateState ();
-
 		DamageFromTrap ();
     }
 
-	// Check State and update it
-	void UpdateState() {
-		float distance = Vector2.Distance(player.transform.position, transform.position);
-
-		if (distance > minDistance && distance < maxDistance) {
-			state = EnemyState.Pursue;
-		} else if (distance > maxDistance) {
-			state = EnemyState.Look;
-		} else if (distance > 0) {
-			state = EnemyState.Stop;
-		}
-
-		Vector2 vecToPlayer = (player.transform.position - transform.position);
-
-		float angle = Mathf.Atan2(vecToPlayer.y, vecToPlayer.x) * Mathf.Rad2Deg - 90f;
-		Quaternion quat = Quaternion.AngleAxis(angle, Vector3.forward);
-
-		// State specific changes
-		if (state == EnemyState.Pursue) {
-			transform.Translate(Vector3.up * Time.deltaTime * speed);
-		} else if (state == EnemyState.Look) {
-
-		} else if (state == EnemyState.Stop) {
-
-		}
-
-		// common changes
-		// TO-DO: Should try and move this out to Update function
-		transform.rotation = Quaternion.RotateTowards(transform.rotation, quat, 180);
-	}
+    // Check State and update it
+    abstract protected void UpdateState();
 		
-	void DamageFromTrap() {
+	protected void DamageFromTrap() {
 		for (int i = 0; i < onTraps.Count; i++) {
 			GameObject trap = onTraps [i];
 
@@ -91,22 +68,27 @@ public class Enemy : MonoBehaviour
 		}
 			
 		if (onTraps.Count > 0) {
-//			Debug.Log ("Enemy is taking daamge from " + onTraps.Count + " traps");
+            //Debug.Log ("Enemy is taking daamge from " + onTraps.Count + " traps");
 		}
 	}
 
-    void OnTriggerEnter2D(Collider2D collider) {
+    void OnTriggerEnter2D(Collider2D collider)
+    {
 		// check by tags
-		if (collider.gameObject.tag == "TowerBullet") {
+		if (collider.gameObject.tag == "TowerBullet")
+        {
 			health -= collider.gameObject.GetComponent<Bullet> ().damage;
 			Destroy (collider.gameObject);
 
-//            Debug.Log("Taking damage from bullet. Enemy health: " + health);
-		} else if (collider.gameObject.tag == "Flame") {
+            //Debug.Log("Taking damage from bullet. Enemy health: " + health);
+		}
+        else if (collider.gameObject.tag == "Flame")
+        {
 			onTraps.Add (collider.gameObject);
-		} else if (collider.gameObject.tag == "Laser") {
+		}
+        else if (collider.gameObject.tag == "Laser")
+        {
 			onTraps.Add (collider.gameObject);
-
 			Debug.Log("Enemy is on a trap.");
 		}
 
@@ -115,7 +97,7 @@ public class Enemy : MonoBehaviour
 		if (collider.gameObject.layer == trapLayer) {
 			onTraps.Add (collider.gameObject);
 
-//            Debug.Log("Enemy is on a trap.");
+            //Debug.Log("Enemy is on a trap.");
         }
     }
 
@@ -133,8 +115,7 @@ public class Enemy : MonoBehaviour
 			// ocurrence was found
 			if (index >= 0 && index < onTraps.Count) {
 				onTraps.RemoveAt (index);
-
-				//				Debug.Log ("Enemy is off a trap.");
+                //Debug.Log ("Enemy is off a trap.");
 			}
 		} else if (collider.gameObject.tag == "Laser") {
 			// remove enemy object
@@ -148,8 +129,7 @@ public class Enemy : MonoBehaviour
 			// ocurrence was found
 			if (index >= 0 && index < onTraps.Count) {
 				onTraps.RemoveAt (index);
-
-				//				Debug.Log ("Enemy is off a trap.");
+                //Debug.Log ("Enemy is off a trap.");
 			}
 		}
 
@@ -168,7 +148,7 @@ public class Enemy : MonoBehaviour
 			if (index >= 0 && index < onTraps.Count) {
 				onTraps.RemoveAt (index);
 
-//				Debug.Log ("Enemy is off a trap.");
+				//Debug.Log ("Enemy is off a trap.");
 			}
 		}
 	}
