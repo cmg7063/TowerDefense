@@ -13,6 +13,9 @@ public class MenuManager : MonoBehaviour
     public Button close;
     public Button credits;
     public Button menu;
+    public Button monsterlog;
+    public Button lore1;
+    public Button lore2;
 
     private GameObject instructionPane;
 
@@ -66,5 +69,20 @@ public class MenuManager : MonoBehaviour
     public void Quit()
     {
         Application.Quit();
+    }
+
+    public void Monsterlog()
+    {
+        SceneManager.LoadScene("MonsterLog");
+    }
+
+    public void Lore1()
+    {
+        SceneManager.LoadScene("Lore1");
+    }
+
+    public void Lore2()
+    {
+        SceneManager.LoadScene("Lore2");
     }
 }
