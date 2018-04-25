@@ -118,7 +118,7 @@ public class Player : MonoBehaviour {
         myAnimator.SetFloat("moveSpeed", Mathf.Abs(horizontal));
 
         // Tower Inputs
-        if (Input.GetKeyUp(KeyCode.RightArrow)) {
+        if (Input.GetKeyUp(KeyCode.DownArrow) || Input.GetKeyUp(KeyCode.RightArrow)) {
             myAnimator.SetBool("buildKey", true);
             towerSelect += 1;
 			if (towerSelect >= towers.Length) {
@@ -127,12 +127,8 @@ public class Player : MonoBehaviour {
 
 			towerCurrent = towers[towerSelect];
 		}
-		if (Input.GetKeyUp(KeyCode.Space)) {
-			PlaceTower();
-            myAnimator.SetBool("buildKey", false);
-        }
 
-        if (Input.GetKeyUp(KeyCode.LeftArrow))
+        if (Input.GetKeyUp(KeyCode.UpArrow) || Input.GetKeyUp(KeyCode.LeftArrow))
         {
             myAnimator.SetBool("buildKey", true);
             towerSelect -= 1;
@@ -178,7 +174,11 @@ public class Player : MonoBehaviour {
         }
         if(collider.gameObject.tag == "EnemyBullet")
         {
-            health -= 10;
+            if (iFrames == false)
+            {
+                health -= 10;
+                iFrames = true;
+            }
             Debug.Log("collision with enemy bullet. Health: " + health);
         }
     }

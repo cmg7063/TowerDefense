@@ -22,6 +22,8 @@ public class GameUI : MonoBehaviour
 	public Image box5;
     public Image box6;
 
+    public static int scoreTotal;
+
     // Use this for initialization
     void Start ()
     {
@@ -31,6 +33,7 @@ public class GameUI : MonoBehaviour
         waveText.text = "WAVE: ";
         defenseText.text = "DEFENSE: ";
         healthText.text = "HEALTH: ";
+        scoreTotal = 0;
     }
 
     // Update is called once per frame
@@ -38,12 +41,12 @@ public class GameUI : MonoBehaviour
     {
         //waveText.text = GameController.Wave.name;
         scrapText.text = "SCRAP: " + Player.scrap;
-        
         healthText.text = "HEALTH: " + Player.health;
+        scoreText.text = "SCORE: " + scoreTotal;
 
 		if (Player.towerSelect == 0) {
 			defenseText.text = "DEFENSE: Single Shot Tower\nShoots a single, fast bullet.\nScrap Cost: 25";
-            box5.GetComponent<Image>().color = Color.black;
+            box6.GetComponent<Image>().color = Color.black;
             box1.GetComponent<Image>().color = Color.white;
             box2.GetComponent<Image>().color = Color.black;
         } else if (Player.towerSelect == 1) {
@@ -65,11 +68,11 @@ public class GameUI : MonoBehaviour
 			defenseText.text = "DEFENSE: Flame Trap\nShoots fire four ways around trap.\nScrap Cost: 50";
             box4.GetComponent<Image>().color = Color.black;
             box5.GetComponent<Image>().color = Color.white;
-            //box6.GetComponent<Image>().color = Color.black;
+            box6.GetComponent<Image>().color = Color.black;
 		} else if (Player.towerSelect == 5) {
 			defenseText.text = "DEFENSE: Laser Trap\nFires piercing laser.\nScrap Cost: 75";
 			box5.GetComponent<Image>().color = Color.black;
-			//box6.GetComponent<Image>().color = Color.white;
+			box6.GetComponent<Image>().color = Color.white;
 			box1.GetComponent<Image>().color = Color.black;
 		}
     }

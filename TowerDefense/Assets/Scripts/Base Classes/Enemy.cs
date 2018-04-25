@@ -37,6 +37,7 @@ abstract public class Enemy : MonoBehaviour
         {
             Destroy(gameObject);
             Instantiate(scrap, this.transform.position, this.transform.rotation);
+            GameUI.scoreTotal += 50;
         }
 
 		UpdateState ();
