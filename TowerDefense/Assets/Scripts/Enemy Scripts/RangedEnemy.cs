@@ -5,8 +5,8 @@ using UnityEngine;
 public class RangedEnemy : Enemy
 {
     public GameObject EnemyBullet;
-    public float timeBetweenShots = 1.0f;
-    private float timestamp = 0.0f;
+    public float fireRate = 0.5f;
+    private float nextFire = 0.0f;
 
 	// Use this for initialization
 	override public void Start ()
@@ -18,7 +18,7 @@ public class RangedEnemy : Enemy
     {
         float distance = Vector2.Distance(player.transform.position, transform.position);
 
-        if (distance > minDistance && distance < maxDistance && Time.time > timestamp)
+        if (distance > minDistance && distance < maxDistance)
         {
             state = EnemyState.Shoot;
         }
@@ -41,23 +41,18 @@ public class RangedEnemy : Enemy
         {
             transform.Translate(Vector3.up * Time.deltaTime * speed);
         }
-        else if (state == EnemyState.Look)
-        {
-        }
-        else if (state == EnemyState.Stop)
-        {
-        }
         else if (state == EnemyState.Shoot)
         {
-            Vector3 direction = player.transform.position - transform.position;
-            float a = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - 90f;
-            Quaternion q = Quaternion.AngleAxis(a, Vector3.forward);
-            Quaternion rotation = Quaternion.RotateTowards(transform.rotation, q, 180);
+            transform.Translate(Vector3.up * Time.deltaTime * speed);
 
-            GameObject bullet = EnemyBullet;
-            Instantiate(bullet, transform.position, rotation);
+            if(Time.time > nextFire)
+            {
+                nextFire = Time.time + fireRate;
 
-            timestamp = Time.time + timestamp;
+                float spread = Random.Range(-10, 10);
+                Quaternion q = Quaternion.Euler(new Vector3(0, 0, angle + spread));
+                GameObject bullet = (GameObject)GameObject.Instantiate(EnemyBullet, transform.position, q);
+            }
         }
         transform.rotation = Quaternion.RotateTowards(transform.rotation, quat, 180);
     }

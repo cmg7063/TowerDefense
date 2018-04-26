@@ -5,8 +5,6 @@ using UnityEngine;
 public class KamikazeEnemy : Enemy
 {
     public GameObject EnemyBullet;
-    public float timeBetweenShots = 1.0f;
-    private float timestamp = 0.0f;
 
     // Use this for initialization
     override public void Start()
@@ -18,7 +16,7 @@ public class KamikazeEnemy : Enemy
     {
         float distance = Vector2.Distance(player.transform.position, transform.position);
 
-        if (distance > minDistance && distance < maxDistance && Time.time > timestamp)
+        if (distance <= maxDistance)
         {
             state = EnemyState.Pursue;
         }
@@ -39,27 +37,25 @@ public class KamikazeEnemy : Enemy
         // State specific changes
         if (state == EnemyState.Pursue)
         {
-            Vector3 direction = player.transform.position - transform.position;
-
-            for (int i = 0; i < 3; i++)
-            {
-                float a = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - 85f - (i * 5);
-                Quaternion q = Quaternion.AngleAxis(a, Vector3.forward);
-
-                GameObject clone = EnemyBullet;
-                //clone.GetComponent<Bullet>().damage = damage;
-                //clone.GetComponent<Bullet>().speed = bulletSpeed;
-                //clone.GetComponent<Bullet>().life = bulletLife;
-
-                Instantiate(clone, transform.position, Quaternion.RotateTowards(transform.rotation, q, 180));
-            }
-        }
-        else if (state == EnemyState.Look)
-        {
-        }
-        else if (state == EnemyState.Stop)
-        {
+            transform.Translate(Vector3.up * Time.deltaTime * speed);
         }
         transform.rotation = Quaternion.RotateTowards(transform.rotation, quat, 180);
+    }
+
+    private void OnCollisionEnter2D(Collision2D coll)
+    {
+        Vector2 vecToPlayer = (player.transform.position - transform.position);
+        float angle = Mathf.Atan2(vecToPlayer.y, vecToPlayer.x) * Mathf.Rad2Deg - 90f;
+
+        if (coll.gameObject.tag == "Player")
+        {
+            for(int i = 0; i < 10; i++)
+            {
+                float spread = Random.Range(-360, 360);
+                Quaternion q = Quaternion.Euler(new Vector3(0, 0, angle + spread));
+                GameObject bullet = (GameObject)GameObject.Instantiate(EnemyBullet, transform.position, q);
+            }
+            Destroy(gameObject);
+        }
     }
 }

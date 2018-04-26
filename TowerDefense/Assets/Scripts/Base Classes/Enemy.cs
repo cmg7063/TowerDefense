@@ -21,6 +21,7 @@ abstract public class Enemy : MonoBehaviour
         Pursue,
         Attack,
         Shoot,
+        Explode,
         Stop
     }
 

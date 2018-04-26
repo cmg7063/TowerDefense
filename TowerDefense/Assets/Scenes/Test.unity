@@ -728,7 +728,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waves:
   - name: Enemy Invasion
-    enemy: {fileID: 4325001210107968, guid: 66a477efa3a690045b2d2b56791d8d2f, type: 2}
+    enemy: {fileID: 4147463386031160, guid: 13568eb2a8d8a644c9689d199fd1cd7f, type: 2}
     count: 2
     rate: 1
   - name: Enemy Invasion 2.0
