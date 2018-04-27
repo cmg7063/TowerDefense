@@ -11,19 +11,26 @@ public class PulseTower : Tower {
 	
 	// Update is called once per frame
 	void Update () {
+		Rotate ();
+
 		if (currentFireRate < 0) {
+			Rotate ();
 			Fire ();
 		} else {
 			currentFireRate -= Time.deltaTime;
 		}
 	}
+		
+	// This tower has a set rotation speed
+	override public void Rotate() {
+		transform.Rotate (0, 0, 10 * Time.deltaTime);
+	}
 
 	private void Fire() {
 		Vector3 dir = new Vector3();
-		float startDeg = Random.Range (0f, 45f);
 
 		for (int i = 0; i < 8; i++) {
-			float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg - (i * 45) + startDeg;
+			float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg - (i * 45);
 			Quaternion q = Quaternion.AngleAxis(angle, Vector3.forward);
 
 			GameObject clone = bulletPrefab;
@@ -31,7 +38,10 @@ public class PulseTower : Tower {
 			clone.GetComponent<Bullet> ().speed = bulletSpeed;
 			clone.GetComponent<Bullet> ().life = bulletLife;
 
-			Instantiate (clone, transform.position, Quaternion.RotateTowards (transform.rotation, q, 180));
+			Vector3 pos = transform.position;
+			pos.z = -1;
+
+			Instantiate (clone, pos, Quaternion.RotateTowards (transform.rotation, q, 180));
 		}
 
 		resetFireRate ();

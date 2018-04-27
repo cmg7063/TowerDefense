@@ -9,99 +9,49 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1695110141586846}
+  m_RootGameObject: {fileID: 1952294495123122}
   m_IsPrefabParent: 1
---- !u!1 &1534406723410090
+--- !u!1 &1952294495123122
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4722466860226934}
-  m_Layer: 0
-  m_Name: EnemyGun
+  - component: {fileID: 4391794799203642}
+  - component: {fileID: 212411247795043144}
+  - component: {fileID: 114818286801739248}
+  - component: {fileID: 61588649740255350}
+  m_Layer: 9
+  m_Name: PulseShotTower
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &1695110141586846
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 4325001210107968}
-  - component: {fileID: 212744368593070722}
-  - component: {fileID: 61423392236124004}
-  - component: {fileID: 50179297268503210}
-  - component: {fileID: 114795979903788816}
-  m_Layer: 0
-  m_Name: RangedEnemy
-  m_TagString: Enemy
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &4325001210107968
+--- !u!4 &4391794799203642
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1695110141586846}
+  m_GameObject: {fileID: 1952294495123122}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -2}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 4722466860226934}
+  m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &4722466860226934
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1534406723410090}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.5, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 4325001210107968}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!50 &50179297268503210
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1695110141586846}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
---- !u!61 &61423392236124004
+--- !u!61 &61588649740255350
 BoxCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1695110141586846}
+  m_GameObject: {fileID: 1952294495123122}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -117,33 +67,35 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &114795979903788816
+--- !u!114 &114818286801739248
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1695110141586846}
+  m_GameObject: {fileID: 1952294495123122}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 323f90310ac5d82409b0c8fcd8221d5e, type: 3}
+  m_Script: {fileID: 11500000, guid: 26a527e2659dd4384966f4d81253f2c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 1194955413261550, guid: 21512bef4f6a6439a8eae3a494e83352, type: 2}
-  scrap: {fileID: 1878330716193628, guid: d32b845730c1865409edc770d00ca248, type: 2}
-  health: 50
-  speed: 2
-  minDistance: 2
-  maxDistance: 10
-  state: 0
-  EnemyBullet: {fileID: 1252475456188906, guid: da0aab39405052c44aaf01798755b10c,
+  buildingName: Pulse Tower
+  scrapCost: 75
+  bulletPrefab: {fileID: 1581751257298180, guid: 6c328fb860b344386abf31d8ddf38cc3,
     type: 2}
-  fireRate: 1
---- !u!212 &212744368593070722
+  target: {fileID: 0}
+  enemyDistance: 0
+  damage: 2.5
+  fireRate: 3
+  currentFireRate: 3
+  bulletSpeed: 2.5
+  bulletLife: 2
+  sightRange: 1
+--- !u!212 &212411247795043144
 SpriteRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1695110141586846}
+  m_GameObject: {fileID: 1952294495123122}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -172,7 +124,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 935fca6b8c3ff4ad7a0efd111194e289, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e6c077f8839064a8e86c0e9cceb4c619, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

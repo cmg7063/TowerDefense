@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Tower : Buildable {
-	public GameObject target;
 	public GameObject bulletPrefab;
+
+	public GameObject target;
+	public float enemyDistance;
 
 	public float damage;
 	public float fireRate;
@@ -39,6 +41,15 @@ public class Tower : Buildable {
 		currentFireRate = fireRate;
 	}
 
+	virtual public void Rotate() {
+		Vector3 dir = target.transform.position - transform.position;
+		float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+		Quaternion q = Quaternion.AngleAxis(angle, Vector3.forward);
+		Quaternion rotation = Quaternion.RotateTowards (transform.rotation, q, 180);
+
+		transform.rotation = rotation;
+	}
+
 	public void GetTarget(GameObject currentObject) {
 		GameObject[] enemies = GameObject.FindGameObjectsWithTag ("Enemy");
         GameObject closest = null;
@@ -53,6 +64,7 @@ public class Tower : Buildable {
 		    }
 	    }
 
+		enemyDistance = distance;
 		target = closest;
 	}
 }

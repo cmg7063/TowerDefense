@@ -10,20 +10,17 @@ public class SingleShotTower : Tower {
 	
 	// Update is called once per frame
 	void Update () {
-		if (currentFireRate <= 0) {
-			GetTarget (gameObject);
+		GetTarget (gameObject);
 
-			// if target found and distnace is within sight range
-			if (target && Vector2.Distance(gameObject.transform.position, target.transform.position) <= sightRange) {
+		if (target && enemyDistance <= sightRange) {
+			Rotate ();
+
+			if (currentFireRate <= 0) {
 				Fire ();
 			}
-		} else {
-			currentFireRate -= Time.deltaTime;
 		}
-	}
 
-	private void checkDistance() {
-		
+		currentFireRate -= Time.deltaTime;
 	}
 
 	private void Fire() {
@@ -37,7 +34,10 @@ public class SingleShotTower : Tower {
 		clone.GetComponent<Bullet> ().speed = bulletSpeed;
 		clone.GetComponent<Bullet> ().life = bulletLife;
 
-		Instantiate(clone, transform.position, rotation);
+		Vector3 pos = transform.position;
+		pos.z = -1;
+
+		Instantiate(clone, pos, rotation);
 
 		resetFireRate ();
 	}
