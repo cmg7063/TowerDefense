@@ -42,7 +42,7 @@ public class GameUI : MonoBehaviour
         //waveText.text = GameController.Wave.name;
         scrapText.text = "SCRAP: " + Player.scrap;
         healthText.text = "HEALTH: " + Player.health;
-        scoreText.text = "SCORE:\n" + scoreTotal;
+        scoreText.text = "SCORE:" + scoreTotal;
 
 		if (Player.towerSelect == 0) {
 			defenseText.text = "DEFENSE: Single Shot Tower\nShoots a single, fast bullet.\nScrap Cost: 25";
