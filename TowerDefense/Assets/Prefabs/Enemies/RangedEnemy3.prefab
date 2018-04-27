@@ -100,7 +100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1194955413261550, guid: 21512bef4f6a6439a8eae3a494e83352, type: 2}
-  scrap: {fileID: 1878330716193628, guid: d32b845730c1865409edc770d00ca248, type: 2}
+  scrap: {fileID: 1935295068777694, guid: b2448337ec43d40f6b07755282eb22c9, type: 2}
   health: 75
   speed: 3
   minDistance: 2
