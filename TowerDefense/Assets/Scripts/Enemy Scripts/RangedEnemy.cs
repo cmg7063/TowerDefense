@@ -11,25 +11,20 @@ public class RangedEnemy : Enemy
     private float nextFire = 0.0f;
 
 	// Use this for initialization
-	override public void Start ()
-    {
+	override public void Start () {
         base.Start();
 	}
 
-    protected override void UpdateState()
-    {
+    protected override void UpdateState() {
         float distance = Vector2.Distance(player.transform.position, transform.position);
 
-        if (distance > minDistance && distance < maxDistance)
-        {
+        if (distance > minDistance && distance < maxDistance) {
             state = EnemyState.Shoot;
         }
-        else if (distance > maxDistance)
-        {
+        else if (distance > maxDistance) {
             state = EnemyState.Look;
         }
-        else if (distance > 0)
-        {
+        else if (distance > 0) {
             state = EnemyState.Stop;
         }
 
@@ -39,16 +34,14 @@ public class RangedEnemy : Enemy
         Quaternion quat = Quaternion.AngleAxis(angle, Vector3.forward);
 
         // State specific changes
-        if (state == EnemyState.Pursue)
-        {
-            transform.Translate(Vector3.up * Time.deltaTime * speed);
+        if (state == EnemyState.Pursue) {
+			transform.Translate(vecToPlayer.normalized * Time.deltaTime * speed, Space.World);
         }
-        else if (state == EnemyState.Shoot)
-        {
-            transform.Translate(Vector3.up * Time.deltaTime * speed);
+        else if (state == EnemyState.Shoot) {
+			transform.Translate(vecToPlayer.normalized * Time.deltaTime * speed);
             gameObject.GetComponent<SpriteRenderer>().sprite = shootSprite;
-            if(Time.time > nextFire)
-            {
+
+            if(Time.time > nextFire) {
                 nextFire = Time.time + fireRate;
 
                 float spread = Random.Range(-10, 10);
@@ -56,6 +49,7 @@ public class RangedEnemy : Enemy
                 GameObject bullet = (GameObject)GameObject.Instantiate(EnemyBullet, transform.position, q);
             }
         }
-        transform.rotation = Quaternion.RotateTowards(transform.rotation, quat, 180);
+
+//        transform.rotation = Quaternion.RotateTowards(transform.rotation, quat, 180);
     }
 }

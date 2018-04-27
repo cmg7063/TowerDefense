@@ -108,12 +108,8 @@ MonoBehaviour:
   state: 0
   EnemyBullet: {fileID: 1252475456188906, guid: da0aab39405052c44aaf01798755b10c,
     type: 2}
-<<<<<<< HEAD:TowerDefense/Assets/Prefabs/Enemies/RangedEnemy1.prefab
   shootSprite: {fileID: 21300038, guid: 2eba42fe800b2b148a71937c6356bac5, type: 3}
   fireRate: 0.5
-=======
-  fireRate: 1
->>>>>>> 5182f3fea0e80fbcd287db0f137e44907ad3bba3:TowerDefense/Assets/Prefabs/Enemies/RangedEnemy.prefab
 --- !u!212 &212744368593070722
 SpriteRenderer:
   m_ObjectHideFlags: 1
