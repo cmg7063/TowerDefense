@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 114141992672812092}
   - component: {fileID: 61390824325842974}
   m_Layer: 9
-  m_Name: SingleShotTowerTemp
+  m_Name: SingleShotTower
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -80,15 +80,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buildingName: Single Shot Tower
   scrapCost: 25
-  target: {fileID: 0}
   bulletPrefab: {fileID: 1581751257298180, guid: 6c328fb860b344386abf31d8ddf38cc3,
     type: 2}
+  target: {fileID: 0}
+  enemyDistance: 0
   damage: 10
   fireRate: 1
   currentFireRate: 1
   bulletSpeed: 15
   bulletLife: 5
-  sightRange: 20
+  sightRange: 12
 --- !u!212 &212792833295720634
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -123,7 +124,11 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+<<<<<<< HEAD:TowerDefense/Assets/Prefabs/Towers/SingleShotTowerTemp.prefab
   m_Sprite: {fileID: 21300000, guid: f376fb7164ea8ee4a83d3254662b4817, type: 3}
+=======
+  m_Sprite: {fileID: 21300000, guid: 2467aff448d5a408dbaba4ae626622cb, type: 3}
+>>>>>>> 5182f3fea0e80fbcd287db0f137e44907ad3bba3:TowerDefense/Assets/Prefabs/Towers/SingleShotTower.prefab
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

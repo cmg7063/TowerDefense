@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 114461918645944186}
   - component: {fileID: 61178298325426084}
   m_Layer: 9
-  m_Name: SpreadShotTowerTemp
+  m_Name: SpreadShotTower
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -80,15 +80,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buildingName: Spread Shot Tower
   scrapCost: 50
-  target: {fileID: 0}
   bulletPrefab: {fileID: 1581751257298180, guid: 6c328fb860b344386abf31d8ddf38cc3,
     type: 2}
+  target: {fileID: 0}
+  enemyDistance: 0
   damage: 5
   fireRate: 2
   currentFireRate: 2
   bulletSpeed: 7.5
   bulletLife: 5
-  sightRange: 15
+  sightRange: 8
 --- !u!212 &212816425150569288
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -123,7 +124,11 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+<<<<<<< HEAD:TowerDefense/Assets/Prefabs/Towers/SpreadShotTowerTemp.prefab
   m_Sprite: {fileID: 21300000, guid: 5cdd7e4df3772f343975e7eb39121bfd, type: 3}
+=======
+  m_Sprite: {fileID: 21300000, guid: 000ec0096e3b84fe9aadd0661f7eefab, type: 3}
+>>>>>>> 5182f3fea0e80fbcd287db0f137e44907ad3bba3:TowerDefense/Assets/Prefabs/Towers/SpreadShotTower.prefab
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

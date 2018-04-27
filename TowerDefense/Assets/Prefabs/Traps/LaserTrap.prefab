@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 114958495906143970}
   - component: {fileID: 61474648454055062}
   m_Layer: 8
-  m_Name: LaserTrapTemp
+  m_Name: LaserTrap
   m_TagString: LaserTrap
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -53,7 +53,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1739805109111996}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.5, y: 0, z: 0}
+  m_LocalPosition: {x: 2.35, y: 0, z: 0.5}
   m_LocalScale: {x: 1.33, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4855162187613788}
@@ -172,7 +172,11 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+<<<<<<< HEAD:TowerDefense/Assets/Prefabs/Traps/LaserTrapTemp.prefab
   m_Sprite: {fileID: 21300000, guid: 795b5eed7fee6624db85d918473ebc53, type: 3}
+=======
+  m_Sprite: {fileID: 21300000, guid: 9b3953f02180546c8aec19a2034bf558, type: 3}
+>>>>>>> 5182f3fea0e80fbcd287db0f137e44907ad3bba3:TowerDefense/Assets/Prefabs/Traps/LaserTrap.prefab
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -216,7 +220,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 9b3953f02180546c8aec19a2034bf558, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1f24fbbdb3781478eb393060068cde20, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_FlipX: 0
   m_FlipY: 0

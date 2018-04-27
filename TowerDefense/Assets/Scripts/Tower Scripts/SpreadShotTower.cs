@@ -10,22 +10,24 @@ public class SpreadShotTower : Tower {
 
 	// Update is called once per frame
 	void Update () {
-		if (currentFireRate < 0) {
-			GetTarget (gameObject);
+		GetTarget (gameObject);
 
-			if (target && Vector2.Distance(gameObject.transform.position, target.transform.position) <= sightRange) {
+		if (target && enemyDistance <= sightRange) {
+			Rotate ();
+
+			if (currentFireRate <= 0) {
 				Fire ();
 			}
-		} else {
-			currentFireRate -= Time.deltaTime;
 		}
+
+		currentFireRate -= Time.deltaTime;
 	}
 
 	private void Fire() {
 		Vector3 dir = target.transform.position - transform.position;
 
 		for (int i = 0; i < 3; i++) {
-			float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg - 85f - (i * 5);
+			float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg - 75f - (i * 15);
 			Quaternion q = Quaternion.AngleAxis(angle, Vector3.forward);
 
 			GameObject clone = bulletPrefab;
@@ -33,7 +35,10 @@ public class SpreadShotTower : Tower {
 			clone.GetComponent<Bullet> ().speed = bulletSpeed;
 			clone.GetComponent<Bullet> ().life = bulletLife;
 
-			Instantiate (clone, transform.position, Quaternion.RotateTowards (transform.rotation, q, 180));
+			Vector3 pos = transform.position;
+			pos.z = -1;
+
+			Instantiate (clone, pos, Quaternion.RotateTowards (transform.rotation, q, 180));
 		}
 
 		resetFireRate ();

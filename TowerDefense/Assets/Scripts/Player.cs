@@ -127,9 +127,7 @@ public class Player : MonoBehaviour {
 
 			towerCurrent = towers[towerSelect];
 		}
-
-        if (Input.GetKeyUp(KeyCode.DownArrow))
-        {
+        if (Input.GetKeyUp(KeyCode.DownArrow)) {
             myAnimator.SetBool("buildKey", true);
             towerSelect += 3;
             if (towerSelect >= towers.Length)
@@ -139,9 +137,7 @@ public class Player : MonoBehaviour {
 
             towerCurrent = towers[towerSelect];
         }
-
-        if (Input.GetKeyUp(KeyCode.LeftArrow))
-        {
+        if (Input.GetKeyUp(KeyCode.LeftArrow)) {
             myAnimator.SetBool("buildKey", true);
             towerSelect -= 1;
             if (towerSelect < 0)
@@ -151,9 +147,7 @@ public class Player : MonoBehaviour {
 
             towerCurrent = towers[towerSelect];
         }
-
-        if (Input.GetKeyUp(KeyCode.UpArrow))
-        {
+        if (Input.GetKeyUp(KeyCode.UpArrow)) {
             myAnimator.SetBool("buildKey", true);
             towerSelect -= 3;
             if (towerSelect < 0)
@@ -163,6 +157,7 @@ public class Player : MonoBehaviour {
 
             towerCurrent = towers[towerSelect];
         }
+
         if (Input.GetKeyUp(KeyCode.Space))
         {
             PlaceTower();
