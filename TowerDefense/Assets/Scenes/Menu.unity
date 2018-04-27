@@ -783,7 +783,9 @@ MonoBehaviour:
   close: {fileID: 837527908}
   credits: {fileID: 1933426399}
   menu: {fileID: 0}
-  lore: {fileID: 238056269}
+  monsterlog: {fileID: 0}
+  lore1: {fileID: 0}
+  lore2: {fileID: 0}
 --- !u!223 &898381079
 Canvas:
   m_ObjectHideFlags: 0

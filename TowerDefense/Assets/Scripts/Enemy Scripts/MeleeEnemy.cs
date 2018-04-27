@@ -2,19 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RangedEnemy : Enemy
+public class MeleeEnemy : Enemy
 {
-    public GameObject EnemyBullet;
+    public Sprite attackSprite;
 
-    public Sprite shootSprite;
-    public float fireRate = 0.5f;
-    private float nextFire = 0.0f;
-
-	// Use this for initialization
-	override public void Start ()
+    // Use this for initialization
+    override public void Start()
     {
         base.Start();
-	}
+    }
 
     protected override void UpdateState()
     {
@@ -22,7 +18,7 @@ public class RangedEnemy : Enemy
 
         if (distance > minDistance && distance < maxDistance)
         {
-            state = EnemyState.Shoot;
+            state = EnemyState.Pursue;
         }
         else if (distance > maxDistance)
         {
@@ -42,19 +38,7 @@ public class RangedEnemy : Enemy
         if (state == EnemyState.Pursue)
         {
             transform.Translate(Vector3.up * Time.deltaTime * speed);
-        }
-        else if (state == EnemyState.Shoot)
-        {
-            transform.Translate(Vector3.up * Time.deltaTime * speed);
-            gameObject.GetComponent<SpriteRenderer>().sprite = shootSprite;
-            if(Time.time > nextFire)
-            {
-                nextFire = Time.time + fireRate;
-
-                float spread = Random.Range(-10, 10);
-                Quaternion q = Quaternion.Euler(new Vector3(0, 0, angle + spread));
-                GameObject bullet = (GameObject)GameObject.Instantiate(EnemyBullet, transform.position, q);
-            }
+            gameObject.GetComponent<SpriteRenderer>().sprite = attackSprite;
         }
         transform.rotation = Quaternion.RotateTowards(transform.rotation, quat, 180);
     }
