@@ -124,7 +124,7 @@ MonoBehaviour:
   tower5: {fileID: 1705465386427336, guid: 7416984dde5154d269c3e2512fa0708b, type: 2}
   tower6: {fileID: 1380726142494136, guid: 814f874a3666841aeb4e873af6530b6d, type: 2}
   score: 0
-  speed: 6
+  speed: 10
   validLocation: 0
   facingLeft: 0
   iFrames: 0

@@ -14,6 +14,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Test.unity
     guid: 751c068d5f0c723408d51d2031b78933
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 1
+    path: Assets/Scenes/InfoScreen.unity
+    guid: 106e8d091da4a0547ab0b13a25470c73
   - enabled: 1
     path: Assets/Scenes/GameOver.unity
-    guid: 3a4e24d8cbe107d44abb1a07b6c81245
+    guid: 8e917b5c937094542a3b78efa96b348c

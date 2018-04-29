@@ -85,11 +85,11 @@ MonoBehaviour:
   target: {fileID: 0}
   enemyDistance: 0
   damage: 5
-  fireRate: 2
+  fireRate: 1.5
   currentFireRate: 2
-  bulletSpeed: 7.5
+  bulletSpeed: 8
   bulletLife: 5
-  sightRange: 8
+  sightRange: 10
 --- !u!212 &212816425150569288
 SpriteRenderer:
   m_ObjectHideFlags: 1

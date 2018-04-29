@@ -84,12 +84,12 @@ MonoBehaviour:
     type: 2}
   target: {fileID: 0}
   enemyDistance: 0
-  damage: 10
+  damage: 5
   fireRate: 1
   currentFireRate: 1
-  bulletSpeed: 15
+  bulletSpeed: 12
   bulletLife: 5
-  sightRange: 12
+  sightRange: 10
 --- !u!212 &212792833295720634
 SpriteRenderer:
   m_ObjectHideFlags: 1
