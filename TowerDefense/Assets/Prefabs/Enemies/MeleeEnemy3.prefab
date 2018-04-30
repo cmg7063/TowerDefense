@@ -102,7 +102,7 @@ MonoBehaviour:
   player: {fileID: 1194955413261550, guid: 21512bef4f6a6439a8eae3a494e83352, type: 2}
   scrap: {fileID: 1935295068777694, guid: b2448337ec43d40f6b07755282eb22c9, type: 2}
   health: 100
-  speed: 6
+  speed: 3
   minDistance: 2
   maxDistance: 30
   state: 0
