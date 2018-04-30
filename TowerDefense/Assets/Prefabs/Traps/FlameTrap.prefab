@@ -320,7 +320,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buildingName: Flame Trap
   scrapCost: 50
-  damagePerSec: 10
+  damagePerSec: 5
   isActive: 0
   fireRate: 2
   flameLife: 4

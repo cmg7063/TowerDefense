@@ -8,6 +8,11 @@ public class FlameTrap : Trap {
 	private float currentFireRate;
 	public float flameLife;
 	private float currentFlameLife;
+    
+    // flame color
+    // r 240
+    // g 103
+    // b 14
 
 	// Use this for initialization
 	void Start () {
