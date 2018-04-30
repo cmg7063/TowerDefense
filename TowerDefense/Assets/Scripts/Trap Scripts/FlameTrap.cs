@@ -10,15 +10,21 @@ public class FlameTrap : Trap {
 	private float currentFlameLife;
     
     // flame color
-    // r 240
-    // g 103
-    // b 14
+	private Color flameColor;
+	private float colorToggle;
+	private float flameToggleAmout;
+	private float alphaAmount;
+	private float alphaToggleAmout;
 
 	// Use this for initialization
 	void Start () {
 		isActive = false;
 		currentFireRate = fireRate;
 		currentFlameLife = 0;
+
+		flameColor =  new Color(240f / 255f, 103f / 255f, 14f / 255f, 1);
+		colorToggle = 0.0f;
+		alphaAmount = 1f;
 	}
 	
 	// Update is called once per frame
@@ -37,10 +43,30 @@ public class FlameTrap : Trap {
 
 		if (isActive) {
 			foreach (Transform child in transform) {
-				Color visible = child.gameObject.GetComponent<SpriteRenderer> ().color;
-				visible.a = 1;
+				if (colorToggle <= 0) {
+					flameToggleAmout = 0.005f;
+				} else if (colorToggle >= 1) {
+					flameToggleAmout = -0.005f;
+				}
 
-				child.gameObject.GetComponent<SpriteRenderer> ().color = visible;
+				if (alphaAmount <= 0.5f) {
+					alphaToggleAmout = 0.001f;
+				} else if (alphaAmount >= 1f) {
+					alphaToggleAmout = -0.001f;
+				}
+
+				colorToggle += flameToggleAmout;
+				alphaAmount += alphaToggleAmout;
+
+				Color current = Color.white;
+				current.r = current.r * (1 - colorToggle) + flameColor.r * (colorToggle);
+				current.g = current.g * (1 - colorToggle) + flameColor.g * (colorToggle);
+				current.b = current.b * (1 - colorToggle) + flameColor.b * (colorToggle);
+				current.a = alphaAmount;
+
+				Debug.Log (current.a);
+
+				child.gameObject.GetComponent<SpriteRenderer> ().color = current;
 			}
 		} else {
 			foreach (Transform child in transform) {

@@ -23,14 +23,14 @@ public class PulseTower : Tower {
 		
 	// This tower has a set rotation speed
 	override public void Rotate() {
-		transform.Rotate (0, 0, 10 * Time.deltaTime);
+		transform.Rotate (0, 0, Random.Range(0,20) * Time.deltaTime);
 	}
 
 	private void Fire() {
 		Vector3 dir = new Vector3();
 
 		for (int i = 0; i < 8; i++) {
-			float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg - (i * 45);
+			float angle = transform.rotation.z * Mathf.Rad2Deg - (i * 45);
 			Quaternion q = Quaternion.AngleAxis(angle, Vector3.forward);
 
 			GameObject clone = bulletPrefab;
