@@ -63,7 +63,7 @@ public class MenuManager : MonoBehaviour
 
     public void Play()
     {
-        SceneManager.LoadScene("SungTest");
+        SceneManager.LoadScene("InfoScreen");
     }
 
     public void Quit()
