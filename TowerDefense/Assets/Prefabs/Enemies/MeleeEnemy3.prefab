@@ -79,7 +79,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.7, y: 1.78}
+    oldSize: {x: 1.4, y: 1.4}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -106,7 +106,7 @@ MonoBehaviour:
   minDistance: 2
   maxDistance: 30
   state: 0
-  attackSprite: {fileID: 21300028, guid: 2eba42fe800b2b148a71937c6356bac5, type: 3}
+  attackSprite: {fileID: 21300008, guid: afc2d236eb02e44b9a8b9b9aeda074dc, type: 3}
 --- !u!212 &212999907663745686
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -141,7 +141,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300026, guid: 2eba42fe800b2b148a71937c6356bac5, type: 3}
+  m_Sprite: {fileID: 21300010, guid: afc2d236eb02e44b9a8b9b9aeda074dc, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
