@@ -7,7 +7,7 @@ public class Player : MonoBehaviour {
 
     public GameObject tower1, tower2, tower3, tower4, tower5, tower6;
     private GameObject[] towers;
-    private GameObject towerCurrent;
+    public GameObject towerCurrent;
     public static int towerSelect;
 
     private Animator myAnimator;

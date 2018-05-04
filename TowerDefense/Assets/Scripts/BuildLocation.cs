@@ -7,6 +7,7 @@ public class BuildLocation : MonoBehaviour {
 
 	private int collidingWith;
 	private Color spriteColor;
+	private bool scrapCheck;
 
 	// Use this for initialization
 	void Start () {
@@ -17,8 +18,9 @@ public class BuildLocation : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		UpdateBuildLocation ();
+		checkScrapCost ();
 
-		if (collidingWith <= 0) {
+		if (collidingWith <= 0 && scrapCheck) {
 			player.GetComponent<Player>().validLocation = true;
 
 			spriteColor.r = 0f;
@@ -31,6 +33,16 @@ public class BuildLocation : MonoBehaviour {
 		}
 
 		gameObject.GetComponent<SpriteRenderer> ().color = spriteColor;
+
+	}
+		
+	void checkScrapCost() {
+		GameObject currentTower = player.GetComponent<Player> ().towerCurrent;
+		scrapCheck = false;
+
+		if (Player.scrap >= currentTower.GetComponent<Buildable> ().scrapCost) {
+			scrapCheck = true;
+		}
 
 	}
 
