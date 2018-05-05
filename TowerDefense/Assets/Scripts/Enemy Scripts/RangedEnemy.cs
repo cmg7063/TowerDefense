@@ -10,8 +10,12 @@ public class RangedEnemy : Enemy {
 	public Sprite idleSprite;
     public Sprite shootSprite;
 
-    public float fireRate = 0.5f;
-    private float nextFire = 0.0f;
+	public float fireRate;
+	private float nextFire;
+
+	public int shotNum;
+	public float spreadAngle;
+	public bool ableToFleeShoot;
 
 	// Use this for initialization
 	override public void Start () {
@@ -39,8 +43,13 @@ public class RangedEnemy : Enemy {
         // State specific changes
 		if (state == EnemyState.Flee) {
 			IsFleeing (vecToPlayer);
+
+			// shoot 1 bullet if they are able to flee and shoot
+			if (ableToFleeShoot) {
+				IsShooting (vecToPlayer, angle, 1);
+			}
 		} else if (state == EnemyState.Shoot) {
-			IsShooting (vecToPlayer, angle);
+			IsShooting (vecToPlayer, angle, shotNum);
 		} else if (state == EnemyState.Pursue) {
 			IsPursing (vecToPlayer);
         }
@@ -48,18 +57,27 @@ public class RangedEnemy : Enemy {
 
 	void IsFleeing(Vector2 vecToPlayer) {
 		transform.Translate(-vecToPlayer.normalized * Time.deltaTime * speed);
-		gameObject.GetComponent<SpriteRenderer>().sprite = idleSprite;
+
+		if (!ableToFleeShoot) {
+			gameObject.GetComponent<SpriteRenderer>().sprite = idleSprite;
+		}
 	}
 
-	void IsShooting(Vector2 vecToPlayer, float angle) {
+	void IsShooting(Vector2 vecToPlayer, float angle, int numberOfShots) {
 		gameObject.GetComponent<SpriteRenderer>().sprite = shootSprite;
 
 		if(Time.time > nextFire) {
 			nextFire = Time.time + fireRate;
 
-			float spread = Random.Range(-10, 10);
-			Quaternion q = Quaternion.Euler(new Vector3(0, 0, angle + spread));
-			GameObject bullet = (GameObject)GameObject.Instantiate(EnemyBullet, transform.position, q);
+			for (int i = 0; i < numberOfShots; i++) {
+				float spread = Random.Range (-spreadAngle / 2, spreadAngle / 2);
+				Quaternion q = Quaternion.Euler (new Vector3 (0, 0, angle + spread));
+				Vector3 pos = transform.position;
+
+				pos.z = -6;
+
+				GameObject bullet = (GameObject)GameObject.Instantiate (EnemyBullet, transform.position, q);
+			}
 		}
 	}
 

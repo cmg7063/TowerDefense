@@ -52,7 +52,7 @@ public class Player : MonoBehaviour {
 		scrap = 100;
 
 		facingLeft = false;
-        facingRight = true;
+//        facingRight = true;
 
 		buildTime = .9f;
 		currentBuildTime = 0f;
@@ -80,12 +80,17 @@ public class Player : MonoBehaviour {
     }
 
     void Flip(float horizontal) {
-        if(horizontal > 0 && !facingRight || horizontal < 0 && facingRight) {
-            facingRight = !facingRight;
-            Vector3 thisScale = transform.localScale;
-            thisScale.x *= -1;
-            transform.localScale = thisScale;
-        }
+		if (facingLeft) {
+			Vector3 thisScale = transform.localScale;
+
+			thisScale.x = -1;
+			transform.localScale = thisScale;
+		} else {
+			Vector3 thisScale = transform.localScale;
+
+			thisScale.x = 1;
+			transform.localScale = thisScale;
+		}
     }
 
 	void PlayerHit() {

@@ -103,14 +103,17 @@ MonoBehaviour:
   scrap: {fileID: 1935295068777694, guid: b2448337ec43d40f6b07755282eb22c9, type: 2}
   health: 75
   speed: 2
-  minDistance: 5
+  minDistance: 6
   maxDistance: 30
   state: 0
   preferredDistance: 7.5
   EnemyBullet: {fileID: 1252475456188906, guid: da0aab39405052c44aaf01798755b10c,
     type: 2}
+  idleSprite: {fileID: 21300018, guid: c879816c261c644d2966d154da079f99, type: 3}
   shootSprite: {fileID: 21300016, guid: c879816c261c644d2966d154da079f99, type: 3}
   fireRate: 1
+  shotNum: 1
+  spreadAngle: 20
 --- !u!212 &212744368593070722
 SpriteRenderer:
   m_ObjectHideFlags: 1
