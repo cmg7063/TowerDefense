@@ -103,7 +103,7 @@ MonoBehaviour:
   scrap: {fileID: 1935295068777694, guid: b2448337ec43d40f6b07755282eb22c9, type: 2}
   health: 87
   speed: 2.5
-  minDistance: 2
+  minDistance: 5
   maxDistance: 30
   state: 0
   EnemyBullet: {fileID: 1252475456188906, guid: da0aab39405052c44aaf01798755b10c,

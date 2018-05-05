@@ -2,11 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RangedEnemy : Enemy
-{
+public class RangedEnemy : Enemy {
+	public float preferredDistance;
+
     public GameObject EnemyBullet;
 
+	public Sprite idleSprite;
     public Sprite shootSprite;
+
     public float fireRate = 0.5f;
     private float nextFire = 0.0f;
 
@@ -18,14 +21,14 @@ public class RangedEnemy : Enemy
     protected override void UpdateState() {
         float distance = Vector2.Distance(player.transform.position, transform.position);
 
-        if (distance > minDistance && distance < maxDistance) {
-            state = EnemyState.Shoot;
-        }
-        else if (distance > maxDistance) {
+		if (distance <= minDistance) {
+			state = EnemyState.Flee;
+		} else if (distance > minDistance && distance <= preferredDistance) {
+			state = EnemyState.Shoot;
+		} else if (distance > preferredDistance && distance <= maxDistance) {
+			state = EnemyState.Pursue;
+        } else if (distance > maxDistance) {
             state = EnemyState.Look;
-        }
-        else if (distance > 0) {
-            state = EnemyState.Stop;
         }
 
         Vector2 vecToPlayer = (player.transform.position - transform.position);
@@ -34,22 +37,34 @@ public class RangedEnemy : Enemy
         Quaternion quat = Quaternion.AngleAxis(angle, Vector3.forward);
 
         // State specific changes
-        if (state == EnemyState.Pursue) {
-			transform.Translate(vecToPlayer.normalized * Time.deltaTime * speed, Space.World);
+		if (state == EnemyState.Flee) {
+			IsFleeing (vecToPlayer);
+		} else if (state == EnemyState.Shoot) {
+			IsShooting (vecToPlayer, angle);
+		} else if (state == EnemyState.Pursue) {
+			IsPursing (vecToPlayer);
         }
-        else if (state == EnemyState.Shoot) {
-			transform.Translate(vecToPlayer.normalized * Time.deltaTime * speed);
-            gameObject.GetComponent<SpriteRenderer>().sprite = shootSprite;
-
-            if(Time.time > nextFire) {
-                nextFire = Time.time + fireRate;
-
-                float spread = Random.Range(-10, 10);
-                Quaternion q = Quaternion.Euler(new Vector3(0, 0, angle + spread));
-                GameObject bullet = (GameObject)GameObject.Instantiate(EnemyBullet, transform.position, q);
-            }
-        }
-
-//        transform.rotation = Quaternion.RotateTowards(transform.rotation, quat, 180);
     }
+
+	void IsFleeing(Vector2 vecToPlayer) {
+		transform.Translate(-vecToPlayer.normalized * Time.deltaTime * speed);
+		gameObject.GetComponent<SpriteRenderer>().sprite = idleSprite;
+	}
+
+	void IsShooting(Vector2 vecToPlayer, float angle) {
+		gameObject.GetComponent<SpriteRenderer>().sprite = shootSprite;
+
+		if(Time.time > nextFire) {
+			nextFire = Time.time + fireRate;
+
+			float spread = Random.Range(-10, 10);
+			Quaternion q = Quaternion.Euler(new Vector3(0, 0, angle + spread));
+			GameObject bullet = (GameObject)GameObject.Instantiate(EnemyBullet, transform.position, q);
+		}
+	}
+
+	void IsPursing(Vector2 vecToPlayer) {
+		transform.Translate(vecToPlayer.normalized * Time.deltaTime * speed, Space.World);
+		gameObject.GetComponent<SpriteRenderer>().sprite = idleSprite;
+	}
 }

@@ -15,10 +15,10 @@ abstract public class Enemy : MonoBehaviour
     public float maxDistance;
 
 	public EnemyState state = EnemyState.Look;
-    public enum EnemyState
-    {
+    public enum EnemyState {
         Look,
         Pursue,
+		Flee,
         Attack,
         Shoot,
         Explode,
@@ -26,16 +26,13 @@ abstract public class Enemy : MonoBehaviour
     }
 
 	// Use this for initialization
-	virtual public void Start ()
-    {
+	virtual public void Start () {
         player = GameObject.FindGameObjectWithTag("Player");
 	}
 	
 	// Update is called once per frame
-	protected void Update ()
-    {
-        if (health <= 0)
-        {
+	protected void Update () {
+        if (health <= 0) {
             Destroy(gameObject);
             Instantiate(scrap, this.transform.position, this.transform.rotation);
             GameUI.scoreTotal += 50;
@@ -68,28 +65,18 @@ abstract public class Enemy : MonoBehaviour
 				}
 			}
 		}
-			
-		if (onTraps.Count > 0) {
-            //Debug.Log ("Enemy is taking daamge from " + onTraps.Count + " traps");
-		}
 	}
 
-    void OnTriggerEnter2D(Collider2D collider)
-    {
+    void OnTriggerEnter2D(Collider2D collider) {
 		// check by tags
-		if (collider.gameObject.tag == "TowerBullet")
-        {
+		if (collider.gameObject.tag == "TowerBullet") {
 			health -= collider.gameObject.GetComponent<Bullet> ().damage;
 			Destroy (collider.gameObject);
 
             //Debug.Log("Taking damage from bullet. Enemy health: " + health);
-		}
-        else if (collider.gameObject.tag == "Flame")
-        {
+		} else if (collider.gameObject.tag == "Flame") {
 			onTraps.Add (collider.gameObject);
-		}
-        else if (collider.gameObject.tag == "Laser")
-        {
+		} else if (collider.gameObject.tag == "Laser") {
 			onTraps.Add (collider.gameObject);
 			Debug.Log("Enemy is on a trap.");
 		}
