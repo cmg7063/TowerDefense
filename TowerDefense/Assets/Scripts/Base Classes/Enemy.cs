@@ -10,6 +10,7 @@ abstract public class Enemy : MonoBehaviour {
 	List<GameObject> onTraps = new List<GameObject>();
 
     public float health;
+	public float maxHealth;
 	public float speed;
 
     public float minDistance;
@@ -31,17 +32,15 @@ abstract public class Enemy : MonoBehaviour {
 	// Use this for initialization
 	virtual public void Start () {
         player = GameObject.FindGameObjectWithTag("Player");
+
+		maxHealth = health;
+
 		frameCounter = 0;
 	}
 	
 	// Update is called once per frame
 	protected void Update () {
-        if (health <= 0) {
-            Destroy(gameObject);
-            Instantiate(scrap, this.transform.position, this.transform.rotation);
-            GameUI.scoreTotal += 50;
-        }
-
+		CheckAlive ();
 		UpdateState ();
 		DamageFromTrap ();
 
@@ -51,6 +50,8 @@ abstract public class Enemy : MonoBehaviour {
 			frameCounter = 0;
 		}
     }
+
+	abstract protected void CheckAlive ();
 
     // Check State and update it
     abstract protected void UpdateState();

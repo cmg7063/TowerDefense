@@ -62,7 +62,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!60 &60124167744088050
 PolygonCollider2D:
   m_ObjectHideFlags: 1
@@ -72,7 +72,7 @@ PolygonCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -146,13 +146,17 @@ MonoBehaviour:
     type: 2}
   player: {fileID: 1194955413261550, guid: 21512bef4f6a6439a8eae3a494e83352, type: 2}
   scrap: {fileID: 1935295068777694, guid: b2448337ec43d40f6b07755282eb22c9, type: 2}
-  health: 50
-  speed: 2
-  minDistance: 2
-  maxDistance: 10
+  health: 60
+  maxHealth: 0
+  speed: 3.5
+  minDistance: 4
+  maxDistance: 30
   state: 0
   EnemyBullet: {fileID: 1252475456188906, guid: da0aab39405052c44aaf01798755b10c,
     type: 2}
+  maxShotNum: 14
+  minBulletSpeed: 2
+  maxBulletSpeed: 4
 --- !u!212 &212359052701605792
 SpriteRenderer:
   m_ObjectHideFlags: 1

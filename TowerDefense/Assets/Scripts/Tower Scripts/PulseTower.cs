@@ -27,8 +27,6 @@ public class PulseTower : Tower {
 	}
 
 	private void Fire() {
-		Vector3 dir = new Vector3();
-
 		for (int i = 0; i < 8; i++) {
 			float angle = transform.rotation.z * Mathf.Rad2Deg - (i * 45);
 			Quaternion q = Quaternion.AngleAxis(angle, Vector3.forward);

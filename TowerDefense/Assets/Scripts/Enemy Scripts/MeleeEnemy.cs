@@ -10,6 +10,14 @@ public class MeleeEnemy : Enemy {
         base.Start();
     }
 
+	protected override void CheckAlive() {
+		if (health <= 0) {
+			Destroy(gameObject);
+			Instantiate(scrap, this.transform.position, this.transform.rotation);
+			GameUI.scoreTotal += 50;
+		}
+	}
+
     protected override void UpdateState() {
         float distance = Vector2.Distance(player.transform.position, transform.position);
 
@@ -22,9 +30,7 @@ public class MeleeEnemy : Enemy {
         }
 
         Vector2 vecToPlayer = (player.transform.position - transform.position);
-
         float angle = Mathf.Atan2(vecToPlayer.y, vecToPlayer.x) * Mathf.Rad2Deg - 90f;
-        Quaternion quat = Quaternion.AngleAxis(angle, Vector3.forward);
 
         // State specific changes
         if (state == EnemyState.Pursue) {
