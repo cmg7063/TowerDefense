@@ -43,7 +43,7 @@ public class MenuManager : MonoBehaviour
 
     public void Instructions()
     {
-        SceneManager.LoadScene("Controls");
+        SceneManager.LoadScene("Instructions");
     }
 
     public void InstPage2()
