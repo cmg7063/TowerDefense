@@ -51,6 +51,20 @@ abstract public class Enemy : MonoBehaviour {
 		}
     }
 
+	public void FlipSprite (Vector2 vecToPlayer) {
+		if (vecToPlayer.x < 0) {
+			Vector3 thisScale = transform.localScale;
+
+			thisScale.x = 1;
+			transform.localScale = thisScale;
+		} else {
+			Vector3 thisScale = transform.localScale;
+
+			thisScale.x = -1;
+			transform.localScale = thisScale;
+		}
+	}
+
 	abstract protected void CheckAlive ();
 
     // Check State and update it

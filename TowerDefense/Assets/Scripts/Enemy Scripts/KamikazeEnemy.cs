@@ -41,6 +41,8 @@ public class KamikazeEnemy : Enemy {
         Vector2 vecToPlayer = (player.transform.position - transform.position);
         float angle = Mathf.Atan2(vecToPlayer.y, vecToPlayer.x) * Mathf.Rad2Deg - 90f;
 
+		FlipSprite (vecToPlayer);
+
         // State specific changes
 		if (state == EnemyState.Explode) {
 			Explode ();
