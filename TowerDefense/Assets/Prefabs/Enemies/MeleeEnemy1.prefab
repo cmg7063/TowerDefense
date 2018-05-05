@@ -99,11 +99,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4556f10030965a4683304d31651c013, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hurtEffect: {fileID: 198240000966026702, guid: 010508476f1ad429aa2aa23db29fdb36,
+    type: 2}
   player: {fileID: 1194955413261550, guid: 21512bef4f6a6439a8eae3a494e83352, type: 2}
   scrap: {fileID: 1935295068777694, guid: b2448337ec43d40f6b07755282eb22c9, type: 2}
   health: 75
   speed: 2
-  minDistance: 2
+  minDistance: 0
   maxDistance: 30
   state: 0
   attackSprite: {fileID: 21300002, guid: afc2d236eb02e44b9a8b9b9aeda074dc, type: 3}

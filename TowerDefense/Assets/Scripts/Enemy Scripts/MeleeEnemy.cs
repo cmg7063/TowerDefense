@@ -2,30 +2,22 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MeleeEnemy : Enemy
-{
+public class MeleeEnemy : Enemy {
     public Sprite attackSprite;
 
     // Use this for initialization
-    override public void Start()
-    {
+    override public void Start() {
         base.Start();
     }
 
-    protected override void UpdateState()
-    {
+    protected override void UpdateState() {
         float distance = Vector2.Distance(player.transform.position, transform.position);
 
-        if (distance > minDistance && distance < maxDistance)
-        {
+        if (distance > minDistance && distance < maxDistance) {
             state = EnemyState.Pursue;
-        }
-        else if (distance > maxDistance)
-        {
+        } else if (distance > maxDistance) {
             state = EnemyState.Look;
-        }
-        else if (distance > 0)
-        {
+        } else if (distance > 0) {
             state = EnemyState.Stop;
         }
 
@@ -35,11 +27,9 @@ public class MeleeEnemy : Enemy
         Quaternion quat = Quaternion.AngleAxis(angle, Vector3.forward);
 
         // State specific changes
-        if (state == EnemyState.Pursue)
-        {
+        if (state == EnemyState.Pursue) {
             transform.Translate(Vector3.up * Time.deltaTime * speed);
             gameObject.GetComponent<SpriteRenderer>().sprite = attackSprite;
         }
-        transform.rotation = Quaternion.RotateTowards(transform.rotation, quat, 180);
     }
 }

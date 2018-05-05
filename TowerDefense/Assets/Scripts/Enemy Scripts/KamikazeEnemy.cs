@@ -2,30 +2,22 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class KamikazeEnemy : Enemy
-{
+public class KamikazeEnemy : Enemy {
     public GameObject EnemyBullet;
 
     // Use this for initialization
-    override public void Start()
-    {
+    override public void Start() {
         base.Start();
 	}
 
-    protected override void UpdateState()
-    {
+    protected override void UpdateState() {
         float distance = Vector2.Distance(player.transform.position, transform.position);
 
-        if (distance <= maxDistance)
-        {
+        if (distance <= maxDistance) {
             state = EnemyState.Pursue;
-        }
-        else if (distance > maxDistance)
-        {
+        } else if (distance > maxDistance) {
             state = EnemyState.Look;
-        }
-        else if (distance > 0)
-        {
+        } else if (distance > 0) {
             state = EnemyState.Stop;
         }
 
@@ -35,26 +27,22 @@ public class KamikazeEnemy : Enemy
         Quaternion quat = Quaternion.AngleAxis(angle, Vector3.forward);
 
         // State specific changes
-        if (state == EnemyState.Pursue)
-        {
+        if (state == EnemyState.Pursue) {
             transform.Translate(Vector3.up * Time.deltaTime * speed);
         }
-        transform.rotation = Quaternion.RotateTowards(transform.rotation, quat, 180);
     }
 
-    private void OnCollisionEnter2D(Collision2D coll)
-    {
+    private void OnCollisionEnter2D(Collision2D coll) {
         Vector2 vecToPlayer = (player.transform.position - transform.position);
         float angle = Mathf.Atan2(vecToPlayer.y, vecToPlayer.x) * Mathf.Rad2Deg - 90f;
 
-        if (coll.gameObject.tag == "Player")
-        {
-            for(int i = 0; i < 10; i++)
-            {
+        if (coll.gameObject.tag == "Player") {
+            for(int i = 0; i < 10; i++) {
                 float spread = Random.Range(-360, 360);
                 Quaternion q = Quaternion.Euler(new Vector3(0, 0, angle + spread));
                 GameObject bullet = (GameObject)GameObject.Instantiate(EnemyBullet, transform.position, q);
             }
+
             Destroy(gameObject);
         }
     }

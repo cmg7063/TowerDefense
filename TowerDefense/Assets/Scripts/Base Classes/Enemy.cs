@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-abstract public class Enemy : MonoBehaviour
-{
+abstract public class Enemy : MonoBehaviour {
+	public ParticleSystem hurtEffect;
+
     public GameObject player;
     public GameObject scrap;
 	List<GameObject> onTraps = new List<GameObject>();
@@ -25,9 +26,12 @@ abstract public class Enemy : MonoBehaviour
         Stop
     }
 
+	private float frameCounter;
+
 	// Use this for initialization
 	virtual public void Start () {
         player = GameObject.FindGameObjectWithTag("Player");
+		frameCounter = 0;
 	}
 	
 	// Update is called once per frame
@@ -40,12 +44,22 @@ abstract public class Enemy : MonoBehaviour
 
 		UpdateState ();
 		DamageFromTrap ();
+
+		frameCounter++;
+
+		if (frameCounter == 60) {
+			frameCounter = 0;
+		}
     }
 
     // Check State and update it
     abstract protected void UpdateState();
 		
 	protected void DamageFromTrap() {
+		if (onTraps.Count > 0 && frameCounter % 30 == 0) {
+			HurtEffect ();
+		}
+
 		for (int i = 0; i < onTraps.Count; i++) {
 			GameObject trap = onTraps [i];
 
@@ -67,12 +81,22 @@ abstract public class Enemy : MonoBehaviour
 		}
 	}
 
+	void HurtEffect() {
+		// play particle effect
+		ParticleSystem clone = hurtEffect;
+		Vector3 location = transform.position;
+		location.z = -6;
+
+		Instantiate(clone, location, transform.rotation);
+	}
+
     void OnTriggerEnter2D(Collider2D collider) {
 		// check by tags
 		if (collider.gameObject.tag == "TowerBullet") {
 			health -= collider.gameObject.GetComponent<Bullet> ().damage;
 			Destroy (collider.gameObject);
 
+			HurtEffect ();
             //Debug.Log("Taking damage from bullet. Enemy health: " + health);
 		} else if (collider.gameObject.tag == "Flame") {
 			onTraps.Add (collider.gameObject);
