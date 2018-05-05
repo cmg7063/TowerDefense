@@ -84,7 +84,7 @@ MonoBehaviour:
     type: 2}
   target: {fileID: 0}
   enemyDistance: 0
-  damage: 5
+  damage: 2.5
   fireRate: 1
   currentFireRate: 1
   bulletSpeed: 12
@@ -103,6 +103,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
