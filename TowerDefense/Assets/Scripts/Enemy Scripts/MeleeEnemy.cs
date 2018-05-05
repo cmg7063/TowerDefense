@@ -28,7 +28,7 @@ public class MeleeEnemy : Enemy {
 
         // State specific changes
         if (state == EnemyState.Pursue) {
-            transform.Translate(Vector3.up * Time.deltaTime * speed);
+			transform.Translate(vecToPlayer.normalized * Time.deltaTime * speed, Space.World);
             gameObject.GetComponent<SpriteRenderer>().sprite = attackSprite;
         }
     }

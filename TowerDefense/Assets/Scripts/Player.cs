@@ -49,7 +49,7 @@ public class Player : MonoBehaviour {
         towerSelect = 0;
 
         health = 100;
-		scrap = 100;
+		scrap = 150;
 
 		facingLeft = false;
 //        facingRight = true;
@@ -204,9 +204,7 @@ public class Player : MonoBehaviour {
 			scrap += 25;
 
 			Destroy(collider.gameObject);
-        }
-
-        if(collider.gameObject.tag == "EnemyBullet") {
+        } else if(collider.gameObject.tag == "EnemyBullet") {
             if (iFrames == false) {
                 health -= 10;
                 iFrames = true;

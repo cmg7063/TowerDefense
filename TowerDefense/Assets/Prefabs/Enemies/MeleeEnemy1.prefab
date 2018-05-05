@@ -20,9 +20,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4593150961132432}
   - component: {fileID: 212227477922126926}
-  - component: {fileID: 61842684474622352}
   - component: {fileID: 50895090624074096}
   - component: {fileID: 114713571712064870}
+  - component: {fileID: 60423416729588756}
   m_Layer: 0
   m_Name: MeleeEnemy1
   m_TagString: Enemy
@@ -37,7 +37,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1781380926972114}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -9.957807, y: -0.016629338, z: 0}
+  m_LocalPosition: {x: -9.957807, y: -0.016629338, z: -4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -63,8 +63,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!61 &61842684474622352
-BoxCollider2D:
+--- !u!60 &60423416729588756
+PolygonCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -85,9 +85,45 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.30714285, y: -0.62857145}
+      - {x: 0.3857143, y: -0.6142857}
+      - {x: 0.4857143, y: -0.5214286}
+      - {x: 0.49285716, y: -0.47142857}
+      - {x: 0.5714286, y: -0.42857143}
+      - {x: 0.6142857, y: -0.37857142}
+      - {x: 0.6357143, y: -0.35}
+      - {x: 0.65, y: -0.30714285}
+      - {x: 0.65, y: -0.08571429}
+      - {x: 0.6357143, y: 0.042857144}
+      - {x: 0.5928571, y: 0.2642857}
+      - {x: 0.5714286, y: 0.45}
+      - {x: 0.4857143, y: 0.55}
+      - {x: 0.42857143, y: 0.5857143}
+      - {x: 0.34285715, y: 0.62142855}
+      - {x: 0.25714287, y: 0.62142855}
+      - {x: 0.12857144, y: 0.60714287}
+      - {x: -0.05, y: 0.5214286}
+      - {x: -0.12142857, y: 0.45714286}
+      - {x: -0.42142856, y: 0.44285715}
+      - {x: -0.44285715, y: 0.44285715}
+      - {x: -0.5642857, y: 0.32857144}
+      - {x: -0.5642857, y: 0.3}
+      - {x: -0.55714285, y: 0.27857143}
+      - {x: -0.47857144, y: 0.2857143}
+      - {x: -0.32142857, y: 0.22142857}
+      - {x: -0.37142858, y: 0.17142858}
+      - {x: -0.47857144, y: 0}
+      - {x: -0.5285714, y: -0.20714286}
+      - {x: -0.51428574, y: -0.2857143}
+      - {x: -0.45, y: -0.42857143}
+      - {x: -0.4, y: -0.51428574}
+      - {x: -0.35714287, y: -0.5214286}
+      - {x: -0.3642857, y: -0.5928571}
+      - {x: -0.30714285, y: -0.6142857}
+      - {x: -0.22857143, y: -0.5928571}
+      - {x: -0.17142858, y: -0.62857145}
 --- !u!114 &114713571712064870
 MonoBehaviour:
   m_ObjectHideFlags: 1
