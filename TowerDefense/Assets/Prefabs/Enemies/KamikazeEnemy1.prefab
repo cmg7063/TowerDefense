@@ -152,6 +152,8 @@ MonoBehaviour:
   minDistance: 3
   maxDistance: 30
   state: 0
+  idleSprite: {fileID: 21300000, guid: c3d4413c59a554f55b98c6e36de7a08e, type: 3}
+  idleSprite2: {fileID: 21300002, guid: c3d4413c59a554f55b98c6e36de7a08e, type: 3}
   EnemyBullet: {fileID: 1252475456188906, guid: da0aab39405052c44aaf01798755b10c,
     type: 2}
   maxShotNum: 8

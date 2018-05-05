@@ -3,14 +3,22 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class KamikazeEnemy : Enemy {
+	public Sprite idleSprite;
+	public Sprite idleSprite2;
+
     public GameObject EnemyBullet;
 	public int maxShotNum;
 	public float minBulletSpeed;
 	public float maxBulletSpeed;
 
+	private bool isSecondSprite;
+	private int frameCounter;
+
     // Use this for initialization
     override public void Start() {
         base.Start();
+		isSecondSprite = false;
+		frameCounter = 0;
 	}
 
 	protected override void CheckAlive() {
@@ -39,6 +47,8 @@ public class KamikazeEnemy : Enemy {
 		} else if (state == EnemyState.Pursue) {
 			transform.Translate(vecToPlayer.normalized * Time.deltaTime * speed, Space.World);
         }
+
+		UpdateFrameCounter ();
     }
 
 	void Explode() {
@@ -62,5 +72,26 @@ public class KamikazeEnemy : Enemy {
 		}
 
 		Destroy (gameObject);
+	}
+
+	void UpdateFrameCounter() {
+		if (frameCounter % 30 == 0) {
+			ToggleSprite ();
+		}
+
+		frameCounter++;
+		if (frameCounter >= 60) {
+			frameCounter = 0;
+		}
+	}
+
+	void ToggleSprite() {
+		isSecondSprite = !isSecondSprite;
+
+		if (isSecondSprite) {
+			gameObject.GetComponent<SpriteRenderer>().sprite = idleSprite;
+		} else {
+			gameObject.GetComponent<SpriteRenderer>().sprite = idleSprite2;
+		}
 	}
 }

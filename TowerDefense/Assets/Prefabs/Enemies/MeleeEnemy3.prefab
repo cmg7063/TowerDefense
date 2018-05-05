@@ -148,6 +148,7 @@ MonoBehaviour:
   minDistance: 0
   maxDistance: 30
   state: 0
+  idleSprite: {fileID: 21300010, guid: afc2d236eb02e44b9a8b9b9aeda074dc, type: 3}
   attackSprite: {fileID: 21300008, guid: afc2d236eb02e44b9a8b9b9aeda074dc, type: 3}
 --- !u!212 &212999907663745686
 SpriteRenderer:

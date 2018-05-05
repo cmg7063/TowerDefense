@@ -3,11 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class MeleeEnemy : Enemy {
+	public Sprite idleSprite;
     public Sprite attackSprite;
+
+	private bool isAttackSprite;
+	private int frameCounter;
 
     // Use this for initialization
     override public void Start() {
         base.Start();
+		isAttackSprite = false;
+		frameCounter = 0;
     }
 
 	protected override void CheckAlive() {
@@ -35,7 +41,29 @@ public class MeleeEnemy : Enemy {
         // State specific changes
         if (state == EnemyState.Pursue) {
 			transform.Translate(vecToPlayer.normalized * Time.deltaTime * speed, Space.World);
-            gameObject.GetComponent<SpriteRenderer>().sprite = attackSprite;
         }
+
+		UpdateFrameCounter ();
     }
+
+	void UpdateFrameCounter() {
+		if (frameCounter % 30 == 0) {
+			ToggleSprite ();
+		}
+
+		frameCounter++;
+		if (frameCounter >= 60) {
+			frameCounter = 0;
+		}
+	}
+
+	void ToggleSprite() {
+		isAttackSprite = !isAttackSprite;
+
+		if (isAttackSprite) {
+			gameObject.GetComponent<SpriteRenderer>().sprite = attackSprite;
+		} else {
+			gameObject.GetComponent<SpriteRenderer>().sprite = idleSprite;
+		}
+	}
 }
