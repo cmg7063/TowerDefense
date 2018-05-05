@@ -23,6 +23,9 @@ public class Player : MonoBehaviour {
 	public bool facingLeft;
     private bool facingRight;
 
+	private float buildTime;
+	private float currentBuildTime;
+
     public bool iFrames;
     public float iFrameTime;
     public float iTimer;
@@ -50,6 +53,9 @@ public class Player : MonoBehaviour {
 
 		facingLeft = false;
         facingRight = true;
+
+		buildTime = .9f;
+		currentBuildTime = 0f;
 
         iFrames = false;
         iFrameTime = 5.0f;
@@ -100,26 +106,33 @@ public class Player : MonoBehaviour {
 
     void InputHandler(float horizontal) {
         // Movement Inputs WASD
-        if (Input.GetKey(KeyCode.W)) {
-            transform.Translate(0, speed * Time.deltaTime, 0);
-        }
-        if (Input.GetKey(KeyCode.S)) {
-            transform.Translate(0, -speed * Time.deltaTime, 0);
-        }
-        if (Input.GetKey(KeyCode.A)) {
-			facingLeft = true;
-			transform.Translate(-speed * Time.deltaTime, 0, 0);
-        }
-        if (Input.GetKey(KeyCode.D)) {
-			facingLeft = false;
-			transform.Translate(speed * Time.deltaTime, 0, 0);
-        }
-
-        myAnimator.SetFloat("moveSpeed", Mathf.Abs(horizontal));
+		var isMoving = false;
+		if (currentBuildTime <= 0) {
+			if (Input.GetKey (KeyCode.W)) {
+				transform.Translate (0, speed * Time.deltaTime, 0);
+				isMoving = true;
+			}
+			if (Input.GetKey (KeyCode.S)) {
+				transform.Translate (0, -speed * Time.deltaTime, 0);
+				isMoving = true;
+			}
+			if (Input.GetKey (KeyCode.A)) {
+				facingLeft = true;
+				transform.Translate (-speed * Time.deltaTime, 0, 0);
+				isMoving = true;
+			}
+			if (Input.GetKey (KeyCode.D)) {
+				facingLeft = false;
+				transform.Translate (speed * Time.deltaTime, 0, 0);
+				isMoving = true;
+			}
+		} else {
+			currentBuildTime -= Time.deltaTime;
+		}
+		myAnimator.SetBool("isMoving", isMoving);
 
         // Tower Inputs
         if (Input.GetKeyUp(KeyCode.RightArrow)) {
-            myAnimator.SetBool("buildKey", true);
             towerSelect += 1;
 			if (towerSelect >= towers.Length) {
 				towerSelect = 0;
@@ -128,41 +141,35 @@ public class Player : MonoBehaviour {
 			towerCurrent = towers[towerSelect];
 		}
         if (Input.GetKeyUp(KeyCode.DownArrow)) {
-            myAnimator.SetBool("buildKey", true);
             towerSelect += 3;
-            if (towerSelect >= towers.Length)
-            {
+            if (towerSelect >= towers.Length) {
                 towerSelect -= 6;
             }
 
             towerCurrent = towers[towerSelect];
         }
         if (Input.GetKeyUp(KeyCode.LeftArrow)) {
-            myAnimator.SetBool("buildKey", true);
             towerSelect -= 1;
-            if (towerSelect < 0)
-            {
+            if (towerSelect < 0) {
                 towerSelect = towers.Length - 1;
             }
 
             towerCurrent = towers[towerSelect];
         }
         if (Input.GetKeyUp(KeyCode.UpArrow)) {
-            myAnimator.SetBool("buildKey", true);
+
             towerSelect -= 3;
-            if (towerSelect < 0)
-            {
+            if (towerSelect < 0) {
                 towerSelect += 6;
             }
 
             towerCurrent = towers[towerSelect];
         }
-
-        if (Input.GetKeyUp(KeyCode.Space))
-        {
+			
+        if (Input.GetKeyUp(KeyCode.Space)) {
             PlaceTower();
-            myAnimator.SetBool("buildKey", false);
         }
+		myAnimator.SetFloat("building", currentBuildTime);
     }
 
     void PlaceTower() {
@@ -181,6 +188,8 @@ public class Player : MonoBehaviour {
 
 			Instantiate(towerCurrent, position, gameObject.transform.rotation);
 			scrap -= scrapCost;
+
+			currentBuildTime = buildTime;
         }
     }
 
@@ -191,14 +200,16 @@ public class Player : MonoBehaviour {
 
 			Destroy(collider.gameObject);
         }
-        if(collider.gameObject.tag == "EnemyBullet")
-        {
-            if (iFrames == false)
-            {
+
+        if(collider.gameObject.tag == "EnemyBullet") {
+            if (iFrames == false) {
                 health -= 10;
                 iFrames = true;
+
+				Destroy (collider.gameObject);
             }
-            Debug.Log("collision with enemy bullet. Health: " + health);
+				
+//            Debug.Log("collision with enemy bullet. Health: " + health);
         }
     }
 
@@ -209,7 +220,7 @@ public class Player : MonoBehaviour {
                 iFrames = true;
             }
 
-            Debug.Log("collision with enemy. Health: " + health);
+//            Debug.Log("collision with enemy. Health: " + health);
         }
     }
 }
