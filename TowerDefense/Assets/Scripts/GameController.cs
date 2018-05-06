@@ -12,7 +12,15 @@ public class GameController : MonoBehaviour {
     [System.Serializable]
     public class Wave {
         public string name;
-        public Transform enemy;
+        public Transform enemy1;
+        public Transform enemy2;
+        public Transform enemy3;
+        public Transform enemy4;
+        public Transform enemy5;
+        public Transform enemy6;
+        public Transform enemy7;
+        public Transform enemy8;
+        public Transform enemy9;
         public int count;
         public float rate;
     }
@@ -86,8 +94,40 @@ public class GameController : MonoBehaviour {
     IEnumerator SpawnWave(Wave _wave) {
         state = SpawnState.Spawning;
         for(int i = 0; i < _wave.count; i++) {
-            SpawnEnemy(_wave.enemy);
-            yield return new WaitForSeconds(1f / _wave.rate);
+            if(_wave == waves[0])
+            {
+                SpawnEnemy(_wave.enemy1);
+                yield return new WaitForSeconds(1f / _wave.rate);
+
+                SpawnEnemy(_wave.enemy2);
+                yield return new WaitForSeconds(1f / _wave.rate);
+
+                SpawnEnemy(_wave.enemy3);
+                yield return new WaitForSeconds(1f / _wave.rate);
+            }
+            if (_wave == waves[1])
+            {
+                SpawnEnemy(_wave.enemy4);
+                yield return new WaitForSeconds(1f / _wave.rate);
+
+                SpawnEnemy(_wave.enemy5);
+                yield return new WaitForSeconds(1f / _wave.rate);
+
+                SpawnEnemy(_wave.enemy6);
+                yield return new WaitForSeconds(1f / _wave.rate);
+            }
+            if (_wave == waves[2])
+            {
+                SpawnEnemy(_wave.enemy7);
+                yield return new WaitForSeconds(1f / _wave.rate);
+
+                SpawnEnemy(_wave.enemy8);
+                yield return new WaitForSeconds(1f / _wave.rate);
+
+                SpawnEnemy(_wave.enemy9);
+                yield return new WaitForSeconds(1f / _wave.rate);
+            }
+            //yield return new WaitForSeconds(1f / _wave.rate);
         }
 
         state = SpawnState.Waiting;

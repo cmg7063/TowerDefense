@@ -1977,17 +1977,41 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waves:
   - name: Enemy Invasion
-    enemy: {fileID: 4325001210107968, guid: 66a477efa3a690045b2d2b56791d8d2f, type: 2}
-    count: 2
+    enemy1: {fileID: 4593150961132432, guid: fc83b2edb6cce428aa8d0c02d9651812, type: 2}
+    enemy2: {fileID: 4819714818442310, guid: 13568eb2a8d8a644c9689d199fd1cd7f, type: 2}
+    enemy3: {fileID: 4325001210107968, guid: 66a477efa3a690045b2d2b56791d8d2f, type: 2}
+    enemy4: {fileID: 4047766644067198, guid: bddf5df88fe4242a9b241cdfda14566b, type: 2}
+    enemy5: {fileID: 4005793962355068, guid: caa6656e0ca94ca41be4fce9f9837dd7, type: 2}
+    enemy6: {fileID: 4986667339962590, guid: 52aca3639e82fcc42950d5a2147497cc, type: 2}
+    enemy7: {fileID: 4441710595495720, guid: 6e8a443d57ffef2439d49c8700939498, type: 2}
+    enemy8: {fileID: 4353871587272468, guid: 9825c5db4953e49d6b0dff76eac40ef6, type: 2}
+    enemy9: {fileID: 4223030050594438, guid: fc364872839c8be48bab39c05583ad19, type: 2}
+    count: 5
     rate: 1
   - name: Enemy Invasion 2.0
-    enemy: {fileID: 4325001210107968, guid: 66a477efa3a690045b2d2b56791d8d2f, type: 2}
-    count: 3
-    rate: 1.5
+    enemy1: {fileID: 4819714818442310, guid: 13568eb2a8d8a644c9689d199fd1cd7f, type: 2}
+    enemy2: {fileID: 4593150961132432, guid: fc83b2edb6cce428aa8d0c02d9651812, type: 2}
+    enemy3: {fileID: 4325001210107968, guid: 66a477efa3a690045b2d2b56791d8d2f, type: 2}
+    enemy4: {fileID: 4047766644067198, guid: bddf5df88fe4242a9b241cdfda14566b, type: 2}
+    enemy5: {fileID: 4005793962355068, guid: caa6656e0ca94ca41be4fce9f9837dd7, type: 2}
+    enemy6: {fileID: 4986667339962590, guid: 52aca3639e82fcc42950d5a2147497cc, type: 2}
+    enemy7: {fileID: 4441710595495720, guid: 6e8a443d57ffef2439d49c8700939498, type: 2}
+    enemy8: {fileID: 4223030050594438, guid: fc364872839c8be48bab39c05583ad19, type: 2}
+    enemy9: {fileID: 4353871587272468, guid: 9825c5db4953e49d6b0dff76eac40ef6, type: 2}
+    count: 7
+    rate: 1
   - name: Enemy Invasion 3.0
-    enemy: {fileID: 4325001210107968, guid: 66a477efa3a690045b2d2b56791d8d2f, type: 2}
-    count: 5
-    rate: 2
+    enemy1: {fileID: 0}
+    enemy2: {fileID: 4819714818442310, guid: 13568eb2a8d8a644c9689d199fd1cd7f, type: 2}
+    enemy3: {fileID: 4325001210107968, guid: 66a477efa3a690045b2d2b56791d8d2f, type: 2}
+    enemy4: {fileID: 4047766644067198, guid: bddf5df88fe4242a9b241cdfda14566b, type: 2}
+    enemy5: {fileID: 4005793962355068, guid: caa6656e0ca94ca41be4fce9f9837dd7, type: 2}
+    enemy6: {fileID: 4986667339962590, guid: 52aca3639e82fcc42950d5a2147497cc, type: 2}
+    enemy7: {fileID: 4353871587272468, guid: 9825c5db4953e49d6b0dff76eac40ef6, type: 2}
+    enemy8: {fileID: 4441710595495720, guid: 6e8a443d57ffef2439d49c8700939498, type: 2}
+    enemy9: {fileID: 4223030050594438, guid: fc364872839c8be48bab39c05583ad19, type: 2}
+    count: 9
+    rate: 1
   spawnPoints:
   - {fileID: 1886668338}
   - {fileID: 790008101}
