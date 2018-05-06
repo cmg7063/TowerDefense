@@ -713,10 +713,10 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1.25
-  m_Text: "Health: 87 points \nDamage: 15 points\nScrap Drop: 45 scraps \nField Notes:
-    \nThe droid cobra is a species of venomous android snake. The serpent's eyes are
-    cobalt blue and its body is long and slender. It moves quickly and has the ability
-    to shoot lethal venom from far ranges. "
+  m_Text: "Health: 63 points \nPhysical Damage: 15 points\nBullet Damage: 10 points\nScrap
+    Drop: 35 scraps \nField Notes: \nThe droid cobra is a species of venomous android
+    snake. The serpent's eyes are cobalt blue and its body is long and slender. It
+    moves quickly and has the ability to shoot lethal venom from far ranges. "
 --- !u!222 &968008156
 CanvasRenderer:
   m_ObjectHideFlags: 0

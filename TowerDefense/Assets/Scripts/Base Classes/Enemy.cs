@@ -12,6 +12,7 @@ abstract public class Enemy : MonoBehaviour {
     public float health;
 	public float maxHealth;
 	public float speed;
+	public int scrapDrop;
 
     public float minDistance;
     public float maxDistance;

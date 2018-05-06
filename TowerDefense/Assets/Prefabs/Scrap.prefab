@@ -38,6 +38,7 @@ GameObject:
   - component: {fileID: 4016976096869044}
   - component: {fileID: 212567752454409984}
   - component: {fileID: 58718872594960646}
+  - component: {fileID: 114875976344519262}
   m_Layer: 0
   m_Name: Scrap
   m_TagString: Scrap
@@ -87,6 +88,18 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!114 &114875976344519262
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1935295068777694}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9eda2c1e748304739aa9f7b2cd07e59c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scrapValue: 30
 --- !u!198 &198393407531252860
 ParticleSystem:
   m_ObjectHideFlags: 1

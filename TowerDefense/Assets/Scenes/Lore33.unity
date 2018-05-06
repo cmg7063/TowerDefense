@@ -513,10 +513,11 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1.25
-  m_Text: "Health: 38 points \nDamage: 15 points\nScrap Drop: 65 scraps \nField Notes:
-    \nThe terror bird is a large, flightless, and highly aggressive bird. The birds
-    have evolved to sprint in pursuit of prey with powerful hooked beaks filled with
-    explosive material which they set off in a kamikaze style defense."
+  m_Text: "Health: 38 points \nPhyiscal Damage: 15 points\nBullet Damage: 10 points\nScrap
+    Drop: 45 scraps \nField Notes: \nThe terror bird is a large, flightless, and highly
+    aggressive bird. The birds have evolved to sprint in pursuit of prey with powerful
+    hooked beaks filled with explosive material which they set off in a kamikaze style
+    defense."
 --- !u!222 &1106141166
 CanvasRenderer:
   m_ObjectHideFlags: 0

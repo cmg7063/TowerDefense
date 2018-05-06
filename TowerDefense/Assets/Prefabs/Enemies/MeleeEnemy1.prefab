@@ -142,6 +142,7 @@ MonoBehaviour:
   health: 75
   maxHealth: 0
   speed: 2
+  scrapDrop: 25
   minDistance: 0
   maxDistance: 30
   state: 0

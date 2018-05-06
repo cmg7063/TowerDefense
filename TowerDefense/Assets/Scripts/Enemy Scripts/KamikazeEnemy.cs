@@ -24,7 +24,11 @@ public class KamikazeEnemy : Enemy {
 	protected override void CheckAlive() {
 		if (health <= 0) {
 			Explode ();
+
+			GameObject clone = scrap;
+			clone.GetComponent<ScrapScript> ().scrapValue = scrapDrop;
 			Instantiate(scrap, this.transform.position, this.transform.rotation);
+
 			GameUI.scoreTotal += 50;
 		}
 	}

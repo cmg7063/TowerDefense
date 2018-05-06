@@ -151,9 +151,10 @@ MonoBehaviour:
     type: 2}
   player: {fileID: 1194955413261550, guid: 21512bef4f6a6439a8eae3a494e83352, type: 2}
   scrap: {fileID: 1935295068777694, guid: b2448337ec43d40f6b07755282eb22c9, type: 2}
-  health: 75
+  health: 50
   maxHealth: 0
   speed: 2
+  scrapDrop: 30
   minDistance: 5
   maxDistance: 30
   state: 0
@@ -179,7 +180,6 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
-  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:

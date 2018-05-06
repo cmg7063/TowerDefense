@@ -25,7 +25,12 @@ public class RangedEnemy : Enemy {
 	protected override void CheckAlive() {
 		if (health <= 0) {
 			Destroy(gameObject);
-			Instantiate(scrap, this.transform.position, this.transform.rotation);
+
+			GameObject clone = scrap;
+			clone.GetComponent<ScrapScript> ().scrapValue = scrapDrop;
+			Instantiate(clone, this.transform.position, this.transform.rotation);
+
+
 			GameUI.scoreTotal += 50;
 		}
 	}

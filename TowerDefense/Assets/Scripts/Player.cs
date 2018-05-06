@@ -200,8 +200,7 @@ public class Player : MonoBehaviour {
 
 	private void OnTriggerEnter2D(Collider2D collider) {
 		if (collider.gameObject.tag == "Scrap") {
-//			collider.gameObject.GetComponent<>(Enemy).scrapValue += 25;
-			scrap += 25;
+			scrap += collider.gameObject.GetComponent<ScrapScript>().scrapValue;
 
 			Destroy(collider.gameObject);
         } else if(collider.gameObject.tag == "EnemyBullet") {
