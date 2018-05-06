@@ -24,11 +24,6 @@ public class MenuManager : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        if (SceneManager.GetActiveScene().name == "Menu")
-        {
-            instructionPane = GameObject.FindGameObjectWithTag("ShowOnClick");
-            hideText();
-        }
     }
 
     void hideText()
@@ -58,7 +53,7 @@ public class MenuManager : MonoBehaviour
 
     public void Credits()
     {
-        SceneManager.LoadScene("Credit");
+        SceneManager.LoadScene("Credits");
     }
 
     public void Close()
@@ -89,5 +84,35 @@ public class MenuManager : MonoBehaviour
     public void Lore2()
     {
         SceneManager.LoadScene("Lore2");
+    }
+
+    public void Lore3()
+    {
+        SceneManager.LoadScene("Lore3");
+    }
+
+    public void Lore12()
+    {
+        SceneManager.LoadScene("Lore12");
+    }
+    public void Lore22()
+    {
+        SceneManager.LoadScene("Lore22");
+    }
+    public void Lore32()
+    {
+        SceneManager.LoadScene("Lore32");
+    }
+    public void Lore13()
+    {
+        SceneManager.LoadScene("Lore13");
+    }
+    public void Lore23()
+    {
+        SceneManager.LoadScene("Lore23");
+    }
+    public void Lore33()
+    {
+        SceneManager.LoadScene("Lore33");
     }
 }

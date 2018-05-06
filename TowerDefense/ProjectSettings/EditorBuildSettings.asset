@@ -14,12 +14,45 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Test.unity
     guid: 751c068d5f0c723408d51d2031b78933
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
-  - enabled: 1
-    path: Assets/Scenes/InfoScreen.unity
-    guid: 106e8d091da4a0547ab0b13a25470c73
   - enabled: 1
     path: Assets/Scenes/GameOver.unity
     guid: 8e917b5c937094542a3b78efa96b348c
+  - enabled: 1
+    path: Assets/Scenes/InfoScreen.unity
+    guid: 0b2d7c6e0d4f04ea587b26a6ed68931f
+  - enabled: 1
+    path: Assets/Scenes/Instructions.unity
+    guid: f1f0123ebd5c4994fbd93db9f35536bc
+  - enabled: 1
+    path: Assets/Scenes/MonsterLog.unity
+    guid: 14cabd46beb0f3a4fb063af06fae3bbd
+  - enabled: 1
+    path: Assets/Scenes/Lore1.unity
+    guid: 08b7a8e59d16c76428fbd202c189dcef
+  - enabled: 1
+    path: Assets/Scenes/Lore12.unity
+    guid: 8670d85466c43124eb05ecb1281e7a8a
+  - enabled: 1
+    path: Assets/Scenes/Lore13.unity
+    guid: fae76e8c256e5d24ab71ed3e7e78dc21
+  - enabled: 1
+    path: Assets/Scenes/Lore2.unity
+    guid: 1e64b5c9cbaf9594b8f8dca5dd5e4484
+  - enabled: 1
+    path: Assets/Scenes/Lore22.unity
+    guid: e8168ddbb08ce84459fe986a4ce36d00
+  - enabled: 1
+    path: Assets/Scenes/Lore23.unity
+    guid: 1a9dda74e24022545b26f408ca33485b
+  - enabled: 1
+    path: Assets/Scenes/Lore3.unity
+    guid: da3c9be0b44aa624b85af1383ea3b470
+  - enabled: 1
+    path: Assets/Scenes/Lore32.unity
+    guid: 32d009e5e4df7024d8c0f7fa343874cc
+  - enabled: 1
+    path: Assets/Scenes/Lore33.unity
+    guid: 875cc2175b8ed5240a86e1a7ab987500
+  - enabled: 1
+    path: Assets/Scenes/Credits.unity
+    guid: bd6caac92b31ad64c992fbc4d41c7472
