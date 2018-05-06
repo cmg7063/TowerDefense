@@ -20,18 +20,24 @@ public class BuildLocation : MonoBehaviour {
 		UpdateBuildLocation ();
 		checkScrapCost ();
 
+		GameObject currentTower = player.GetComponent<Player> ().towerCurrent;
+
 		if (collidingWith <= 0 && scrapCheck) {
 			player.GetComponent<Player>().validLocation = true;
 
-			spriteColor.r = 0f;
+			spriteColor.r = 1f;
 			spriteColor.g = 1f;
+			spriteColor.b = 1f;
 		} else {
 			player.GetComponent<Player>().validLocation = false;
 
+
 			spriteColor.r = 1f;
 			spriteColor.g = 0f;
+			spriteColor.b = 0f;
 		}
 
+		gameObject.GetComponent<SpriteRenderer>().sprite = currentTower.GetComponent<SpriteRenderer> ().sprite;
 		gameObject.GetComponent<SpriteRenderer> ().color = spriteColor;
 
 	}

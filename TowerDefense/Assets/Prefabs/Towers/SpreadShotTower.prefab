@@ -85,8 +85,8 @@ MonoBehaviour:
   target: {fileID: 0}
   enemyDistance: 0
   damage: 3.5
-  fireRate: 1.25
-  currentFireRate: 1.25
+  fireRate: 1.5
+  currentFireRate: 1.5
   bulletSpeed: 8
   bulletLife: 5
   sightRange: 10

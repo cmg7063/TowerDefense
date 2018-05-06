@@ -27,6 +27,7 @@ public class GameController : MonoBehaviour {
 
     public Wave[] waves;
     private int nextWave = 0;
+	private int totalWaves = 0;
 
     public Transform[] spawnPoints;
 
@@ -57,8 +58,7 @@ public class GameController : MonoBehaviour {
         }
 
 		if (waveCountdown <= 0) {
-            if(state != SpawnState.Spawning)
-            {
+            if(state != SpawnState.Spawning) {
                 StartCoroutine(SpawnWave(waves[nextWave]));
             }
         } else {
@@ -69,6 +69,7 @@ public class GameController : MonoBehaviour {
     void WaveCompleted() {
         state = SpawnState.Counting;
         waveCountdown = timeBetweenWaves;
+		totalWaves++;
 
         if (nextWave + 1 > waves.Length - 1) {
             nextWave = 0;
@@ -93,40 +94,53 @@ public class GameController : MonoBehaviour {
 
     IEnumerator SpawnWave(Wave _wave) {
         state = SpawnState.Spawning;
-        for(int i = 0; i < _wave.count; i++) {
-            if(_wave == waves[0])
-            {
-                SpawnEnemy(_wave.enemy1);
-                yield return new WaitForSeconds(1f / _wave.rate);
+		float enemySpawnMod = Mathf.Floor((totalWaves / 3) + 1);
 
-                SpawnEnemy(_wave.enemy2);
-                yield return new WaitForSeconds(1f / _wave.rate);
+		for(int i = 0; i < _wave.count * enemySpawnMod; i++) {
+			float variation = Random.Range (0.0f, 100.0f);
+			int enemyType = Random.Range (0, 3);
 
-                SpawnEnemy(_wave.enemy3);
-                yield return new WaitForSeconds(1f / _wave.rate);
-            }
-            if (_wave == waves[1])
-            {
-                SpawnEnemy(_wave.enemy4);
-                yield return new WaitForSeconds(1f / _wave.rate);
+			// variation 2 = ranged
+			// variation 3 = kamikaze
+			float variation3Rate = totalWaves * 2f;
+			float variation2Rate = totalWaves * 3f;
 
-                SpawnEnemy(_wave.enemy5);
-                yield return new WaitForSeconds(1f / _wave.rate);
+			Debug.Log (variation + ", " + variation3Rate + ", " + variation2Rate);
+			if (variation <= variation3Rate) {
+				if (enemyType == 0) {
+					SpawnEnemy (_wave.enemy7);
+					yield return new WaitForSeconds (1f / _wave.rate);
+				} else if (enemyType == 1) {
+					SpawnEnemy (_wave.enemy8);
+					yield return new WaitForSeconds (1f / _wave.rate);
+				} else {
+					SpawnEnemy (_wave.enemy9);
+					yield return new WaitForSeconds (1f / _wave.rate);
+				}
+			} else if (variation < variation2Rate + variation3Rate) {
+				if (enemyType == 0) {
+					SpawnEnemy (_wave.enemy3);
+					yield return new WaitForSeconds (1f / _wave.rate);
+				} else if (enemyType == 1) {
+					SpawnEnemy (_wave.enemy4);
+					yield return new WaitForSeconds (1f / _wave.rate);
+				} else {
+					SpawnEnemy (_wave.enemy5);
+					yield return new WaitForSeconds (1f / _wave.rate);
+				}
+			} else {
+				if (enemyType == 0) {
+					SpawnEnemy (_wave.enemy1);
+					yield return new WaitForSeconds (1f / _wave.rate);
+				} else if (enemyType == 1) {
+					SpawnEnemy (_wave.enemy2);
+					yield return new WaitForSeconds (1f / _wave.rate);
+				} else {
+					SpawnEnemy (_wave.enemy3);
+					yield return new WaitForSeconds (1f / _wave.rate);
+				}
+			}
 
-                SpawnEnemy(_wave.enemy6);
-                yield return new WaitForSeconds(1f / _wave.rate);
-            }
-            if (_wave == waves[2])
-            {
-                SpawnEnemy(_wave.enemy7);
-                yield return new WaitForSeconds(1f / _wave.rate);
-
-                SpawnEnemy(_wave.enemy8);
-                yield return new WaitForSeconds(1f / _wave.rate);
-
-                SpawnEnemy(_wave.enemy9);
-                yield return new WaitForSeconds(1f / _wave.rate);
-            }
             //yield return new WaitForSeconds(1f / _wave.rate);
         }
 
@@ -136,7 +150,7 @@ public class GameController : MonoBehaviour {
     }
 
     void SpawnEnemy(Transform _enemy) {
-        Debug.Log("Spawning Enemy:" + _enemy.name);
+//        Debug.Log("Spawning Enemy:" + _enemy.name);
         Transform _sp = spawnPoints[Random.Range(0, spawnPoints.Length)];
         Instantiate(_enemy, _sp.position, _sp.rotation);
     }

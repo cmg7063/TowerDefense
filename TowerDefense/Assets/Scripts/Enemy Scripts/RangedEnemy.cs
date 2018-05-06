@@ -86,10 +86,12 @@ public class RangedEnemy : Enemy {
 				float spread = Random.Range (-spreadAngle / 2, spreadAngle / 2);
 				Quaternion q = Quaternion.Euler (new Vector3 (0, 0, angle + spread));
 				Vector3 pos = transform.position;
+				GameObject clone = EnemyBullet;
+				clone.GetComponent<Bullet> ().speed = 3f;
 
 				pos.z = -6;
 
-				Instantiate (EnemyBullet, transform.position, q);
+				Instantiate (clone, transform.position, q);
 			}
 		}
 	}
