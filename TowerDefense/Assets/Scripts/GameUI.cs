@@ -7,7 +7,7 @@ public class GameUI : MonoBehaviour
 {
     public Text scoreText;
     public Text scrapText;
-    public Text waveText;
+    //public Text waveText;
     public Text defenseText;
     public Text healthText;
 
@@ -30,7 +30,7 @@ public class GameUI : MonoBehaviour
         instructionPane = GameObject.FindGameObjectWithTag("HideOnClick");
         scoreText.text = "SCORE:\n";
         scrapText.text = "SCRAP: ";
-        waveText.text = "WAVE: ";
+        //waveText.text = "WAVE: ";
         defenseText.text = "DEFENSE: ";
         healthText.text = "HEALTH: ";
         scoreTotal = 0;
