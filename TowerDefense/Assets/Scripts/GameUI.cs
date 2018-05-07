@@ -88,7 +88,10 @@ public class GameUI : MonoBehaviour
             box1.GetComponent<Image>().color = new Color32(48, 66, 80, 100);
             box2.GetComponent<Image>().color = new Color32(48, 66, 80, 100);
             box3.GetComponent<Image>().color = new Color32(48, 66, 80, 100);
+
         }
+
+        PlayerPrefs.SetInt("Score", scoreTotal);
     }
 
     void hideText()
